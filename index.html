@@ -18,6 +18,7 @@ import {
 const AlphaBrainHP = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState(null);
+  const [logoError, setLogoError] = useState(false); // ロゴ読み込みエラー判定用
 
   const toggleFaq = (index) => {
     setOpenFaq(openFaq === index ? null : index);
@@ -54,19 +55,20 @@ const AlphaBrainHP = () => {
           <div className="flex justify-between h-20 items-center">
             {/* Logo Area */}
             <div className="flex-shrink-0 flex items-center cursor-pointer" onClick={() => scrollToSection('top')}>
-              {/* ロゴ画像があれば表示、読み込めない場合はテキストフォールバック */}
-              <div className="h-12 w-auto flex items-center gap-2">
-                 <img 
-                   src="logo_title.png" 
-                   alt="ALPHA BRAIN Logo" 
-                   className="h-12 object-contain"
-                   onError={(e) => {
-                     e.target.style.display = 'none'; 
-                     e.target.nextSibling.style.display = 'block';
-                   }} 
-                 />
-                 <span className="hidden text-2xl font-bold tracking-widest text-[#0F3D7C]" style={{ fontFamily: 'Futura, sans-serif' }}>ALPHA BRAIN</span>
-              </div>
+              {/* logo_title.png を表示。エラー時はテキストロゴに切り替え */}
+              {!logoError ? (
+                <img 
+                  src="logo_title.png" 
+                  alt="ALPHA BRAIN" 
+                  className="h-12 w-auto object-contain"
+                  onError={() => setLogoError(true)}
+                />
+              ) : (
+                <div className="flex items-center gap-2">
+                   {/* 画像がない場合のフォールバック（ロゴマークがあれば表示、なければテキストのみ） */}
+                   <span className="text-2xl font-bold tracking-widest text-[#0F3D7C]" style={{ fontFamily: 'Futura, sans-serif' }}>ALPHA BRAIN</span>
+                </div>
+              )}
             </div>
 
             {/* Desktop Menu */}
