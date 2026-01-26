@@ -1,532 +1,640 @@
-import React, { useState } from 'react';
-import { 
-  BarChart3, 
-  Settings, 
-  Target, 
-  Users, 
-  CheckCircle2, 
-  ArrowRight, 
-  Mail, 
-  MapPin, 
-  ChevronDown, 
-  ChevronUp,
-  Building2,
-  TrendingUp,
-  FileText
-} from 'lucide-react';
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アルファーブレイン合同会社 | ALPHA BRAIN LLC.</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts (Noto Sans JP) -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .futura-font {
+            font-family: 'Futura', sans-serif;
+        }
+        /* Custom Colors config for Tailwind */
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            primary: '#0F3D7C',
+                        }
+                    }
+                }
+            }
+        </script>
+        /* Smooth scrolling for anchor links */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-700 font-sans antialiased">
 
-const AlphaBrainHP = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [openFaq, setOpenFaq] = useState(null);
-  const [logoError, setLogoError] = useState(false); // ロゴ読み込みエラー判定用
-
-  const toggleFaq = (index) => {
-    setOpenFaq(openFaq === index ? null : index);
-  };
-
-  const scrollToSection = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsMenuOpen(false);
-    }
-  };
-
-  // メールソフトを起動する関数
-  const openMailer = () => {
-    window.location.href = "mailto:contact@alpha-brain.jp";
-    setIsMenuOpen(false);
-  };
-
-  // カラーパレット定義（ロゴに基づく）
-  const colors = {
-    primary: "#0F3D7C", // ロゴの濃い青を想定
-    secondary: "#6B7280", // グレー
-    accent: "#E5E7EB", // 薄いグレー
-    white: "#FFFFFF",
-    bgLight: "#F9FAFB"
-  };
-
-  return (
-    <div className="font-sans text-gray-700 bg-white">
-      {/* Navigation */}
-      <nav className="fixed w-full z-50 bg-white/95 backdrop-blur-sm shadow-sm border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-20 items-center">
-            {/* Logo Area */}
-            <div className="flex-shrink-0 flex items-center cursor-pointer" onClick={() => scrollToSection('top')}>
-              {/* logo_title.png を表示。エラー時はテキストロゴに切り替え */}
-              {!logoError ? (
-                <img 
-                  src="logo_title.png" 
-                  alt="ALPHA BRAIN" 
-                  className="h-12 w-auto object-contain"
-                  onError={() => setLogoError(true)}
-                />
-              ) : (
-                <div className="flex items-center gap-2">
-                   {/* 画像がない場合のフォールバック（ロゴマークがあれば表示、なければテキストのみ） */}
-                   <span className="text-2xl font-bold tracking-widest text-[#0F3D7C]" style={{ fontFamily: 'Futura, sans-serif' }}>ALPHA BRAIN</span>
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-sm shadow-sm border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <!-- Logo Area -->
+                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="scrollToSection('top')">
+                    <!-- ロゴ画像: 読み込みエラー時に非表示にし、テキストを表示する -->
+                    <img 
+                        id="header-logo-img"
+                        src="logo_title.png" 
+                        alt="ALPHA BRAIN" 
+                        class="h-12 w-auto object-contain"
+                        onerror="handleLogoError()"
+                    />
+                    <!-- 代替テキストロゴ（初期状態は非表示） -->
+                    <div id="header-logo-text" class="hidden flex items-center gap-2">
+                        <span class="text-2xl font-bold tracking-widest text-[#0F3D7C] futura-font">ALPHA BRAIN</span>
+                    </div>
                 </div>
-              )}
-            </div>
 
-            {/* Desktop Menu */}
-            <div className="hidden md:flex space-x-8 items-center">
-              {['課題', 'サービス', '事例', '選ばれる理由', '進め方', 'FAQ'].map((item, index) => {
-                const targets = ['issues', 'service', 'cases', 'reason', 'process', 'faq'];
-                return (
-                  <button 
-                    key={index}
-                    onClick={() => scrollToSection(targets[index])}
-                    className="text-gray-600 hover:text-[#0F3D7C] font-medium transition-colors"
-                  >
-                    {item}
-                  </button>
-                );
-              })}
-              <button 
-                onClick={openMailer}
-                className="px-6 py-2.5 rounded text-white font-bold transition-all transform hover:-translate-y-0.5 shadow-md"
-                style={{ backgroundColor: colors.primary }}
-              >
-                お問い合わせ
-              </button>
-            </div>
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <button onclick="scrollToSection('issues')" class="text-gray-600 hover:text-[#0F3D7C] font-medium transition-colors">課題</button>
+                    <button onclick="scrollToSection('service')" class="text-gray-600 hover:text-[#0F3D7C] font-medium transition-colors">サービス</button>
+                    <button onclick="scrollToSection('cases')" class="text-gray-600 hover:text-[#0F3D7C] font-medium transition-colors">事例</button>
+                    <button onclick="scrollToSection('reason')" class="text-gray-600 hover:text-[#0F3D7C] font-medium transition-colors">選ばれる理由</button>
+                    <button onclick="scrollToSection('process')" class="text-gray-600 hover:text-[#0F3D7C] font-medium transition-colors">進め方</button>
+                    <button onclick="scrollToSection('faq')" class="text-gray-600 hover:text-[#0F3D7C] font-medium transition-colors">FAQ</button>
+                    <button 
+                        onclick="openMailer()"
+                        class="px-6 py-2.5 rounded text-white font-bold transition-all transform hover:-translate-y-0.5 shadow-md bg-[#0F3D7C]"
+                    >
+                        お問い合わせ
+                    </button>
+                </div>
 
-            {/* Mobile Menu Button */}
-            <div className="md:hidden flex items-center">
-              <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-gray-600 focus:outline-none">
-                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  {isMenuOpen ? (
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  ) : (
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                  )}
-                </svg>
-              </button>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button onclick="toggleMobileMenu()" class="text-gray-600 focus:outline-none">
+                        <i data-lucide="menu" id="menu-icon" class="h-6 w-6"></i>
+                        <i data-lucide="x" id="close-icon" class="h-6 w-6 hidden"></i>
+                    </button>
+                </div>
             </div>
-          </div>
         </div>
 
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="md:hidden bg-white border-b shadow-lg absolute w-full">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              {['課題', 'サービス', '事例', '選ばれる理由', '進め方', 'FAQ'].map((item, index) => {
-                const targets = ['issues', 'service', 'cases', 'reason', 'process', 'faq'];
-                return (
-                  <button
-                    key={index}
-                    onClick={() => scrollToSection(targets[index])}
-                    className="block w-full text-left px-3 py-4 text-base font-medium text-gray-700 hover:bg-gray-50 border-b border-gray-100 last:border-0"
-                  >
-                    {item}
-                  </button>
-                );
-              })}
-              {/* Mobile Menu Contact Button */}
-              <button
-                onClick={openMailer}
-                className="block w-full text-left px-3 py-4 text-base font-medium text-[#0F3D7C] hover:bg-gray-50 border-b border-gray-100 last:border-0"
-              >
-                お問い合わせ
-              </button>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b shadow-lg absolute w-full">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <button onclick="scrollToSection('issues')" class="block w-full text-left px-3 py-4 text-base font-medium text-gray-700 hover:bg-gray-50 border-b border-gray-100">課題</button>
+                <button onclick="scrollToSection('service')" class="block w-full text-left px-3 py-4 text-base font-medium text-gray-700 hover:bg-gray-50 border-b border-gray-100">サービス</button>
+                <button onclick="scrollToSection('cases')" class="block w-full text-left px-3 py-4 text-base font-medium text-gray-700 hover:bg-gray-50 border-b border-gray-100">事例</button>
+                <button onclick="scrollToSection('reason')" class="block w-full text-left px-3 py-4 text-base font-medium text-gray-700 hover:bg-gray-50 border-b border-gray-100">選ばれる理由</button>
+                <button onclick="scrollToSection('process')" class="block w-full text-left px-3 py-4 text-base font-medium text-gray-700 hover:bg-gray-50 border-b border-gray-100">進め方</button>
+                <button onclick="scrollToSection('faq')" class="block w-full text-left px-3 py-4 text-base font-medium text-gray-700 hover:bg-gray-50 border-b border-gray-100">FAQ</button>
+                <button onclick="openMailer()" class="block w-full text-left px-3 py-4 text-base font-medium text-[#0F3D7C] hover:bg-gray-50">お問い合わせ</button>
             </div>
-          </div>
-        )}
-      </nav>
+        </div>
+    </nav>
 
-      {/* Hero Section */}
-      <section id="top" className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-gradient-to-br from-gray-50 to-white">
-        {/* Decorative Background Elements */}
-        <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 opacity-10 transform rotate-45" style={{ backgroundColor: colors.primary }}></div>
-        <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-72 h-72 rounded-full opacity-5 bg-gray-400"></div>
+    <!-- Hero Section -->
+    <section id="top" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-gradient-to-br from-gray-50 to-white">
+        <!-- Decorative Background Elements -->
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 opacity-10 transform rotate-45 bg-[#0F3D7C]"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-72 h-72 rounded-full opacity-5 bg-gray-400"></div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="lg:w-2/3">
-            <h1 className="text-4xl lg:text-6xl font-bold leading-tight mb-6 text-gray-900">
-              <span className="block mb-2 text-xl lg:text-2xl font-medium text-gray-500">不動産会社の“数字と業務”を整えて、</span>
-              <span style={{ color: colors.primary }}>利益が残る仕組み</span>に変える。
-            </h1>
-            <p className="text-lg lg:text-xl text-gray-600 mb-10 leading-relaxed border-l-4 pl-6" style={{ borderColor: colors.primary }}>
-              営業KPIの設計・可視化から、CRM／スプレッドシート等による集計基盤の構築、<br className="hidden lg:block"/>
-              現場に定着する運用設計まで。<br />
-              「担当者ガチャ」「手作業の集計」「意思決定の遅れ」を、<br className="hidden lg:block"/>
-              再現性ある仕組みに変えます。
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="lg:w-2/3">
+                <h1 class="text-4xl lg:text-6xl font-bold leading-tight mb-6 text-gray-900">
+                    <span class="block mb-2 text-xl lg:text-2xl font-medium text-gray-500">不動産会社の“数字と業務”を整えて、</span>
+                    <span class="text-[#0F3D7C]">利益が残る仕組み</span>に変える。
+                </h1>
+                <p class="text-lg lg:text-xl text-gray-600 mb-10 leading-relaxed border-l-4 pl-6 border-[#0F3D7C]">
+                    営業KPIの設計・可視化から、CRM／スプレッドシート等による集計基盤の構築、<br class="hidden lg:block"/>
+                    現場に定着する運用設計まで。<br />
+                    「担当者ガチャ」「手作業の集計」「意思決定の遅れ」を、<br class="hidden lg:block"/>
+                    再現性ある仕組みに変えます。
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <button 
+                        onclick="openMailer()"
+                        class="px-8 py-4 rounded text-white font-bold text-lg shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2 bg-[#0F3D7C]"
+                    >
+                        <i data-lucide="mail" class="w-5 h-5"></i>
+                        お問い合わせ・相談
+                    </button>
+                    <div class="flex items-center text-sm text-gray-500 px-4">
+                        ※不動産業界での支援実績多数。業種は幅広く対応可能。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Issues Section -->
+    <section id="issues" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">こんな<span class="text-[#0F3D7C]">課題</span>はありませんか？</h2>
+                <div class="w-16 h-1 mx-auto bg-[#0F3D7C]"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Issue 1 -->
+                <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                    <div class="bg-red-50 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i data-lucide="trending-up" class="w-8 h-8 text-red-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">KPIが形骸化している</h3>
+                    <p class="text-gray-600">KPIはあるが更新されず、経営の実態が見えていない。</p>
+                </div>
+                <!-- Issue 2 -->
+                <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                    <div class="bg-red-50 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i data-lucide="file-text" class="w-8 h-8 text-red-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">集計が手作業</h3>
+                    <p class="text-gray-600">データを作るのに時間がかかり、意思決定が遅れる。</p>
+                </div>
+                <!-- Issue 3 -->
+                <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                    <div class="bg-red-50 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i data-lucide="users" class="w-8 h-8 text-red-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">成果が属人的</h3>
+                    <p class="text-gray-600">トップ営業マン頼みで、組織としての再現性がない。</p>
+                </div>
+                <!-- Issue 4 -->
+                <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                    <div class="bg-red-50 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i data-lucide="target" class="w-8 h-8 text-red-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">会議がただの報告会</h3>
+                    <p class="text-gray-600">数字を読み上げるだけで、具体的な改善アクションが出ない。</p>
+                </div>
+                <!-- Issue 5 -->
+                <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                    <div class="bg-red-50 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i data-lucide="settings" class="w-8 h-8 text-red-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">現場が忙殺されている</h3>
+                    <p class="text-gray-600">仕組み化したいが、目の前の業務で手が回らない。</p>
+                </div>
+                
+                <!-- Value Proposition Box -->
+                <div class="bg-gradient-to-br from-[#0F3D7C] to-[#1a5bb5] p-8 rounded-lg shadow-lg text-white transform md:scale-105">
+                    <h3 class="text-xl font-bold mb-4 border-b border-white/30 pb-2">解決後の未来</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle-2" class="w-6 h-6 flex-shrink-0 text-blue-200"></i>
+                            <span>経営判断に必要な数字が、同じ定義で揃う</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle-2" class="w-6 h-6 flex-shrink-0 text-blue-200"></i>
+                            <span>ボトルネックが明確になり、打ち手を選べる</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle-2" class="w-6 h-6 flex-shrink-0 text-blue-200"></i>
+                            <span>人が増えても崩れない、成長の土台ができる</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="service" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">サービス内容</h2>
+                <p class="text-gray-600">業績向上・業務効率化・マーケティングの3軸で支援します</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Service A -->
+                <div class="border border-gray-200 rounded-lg overflow-hidden group hover:border-[#0F3D7C] transition-colors">
+                    <div class="h-2 bg-[#0F3D7C]"></div>
+                    <div class="p-8">
+                        <div class="mb-6 text-[#0F3D7C]">
+                            <i data-lucide="trending-up" class="w-12 h-12"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">業績向上支援<br/><span class="text-base font-normal text-gray-500">（KPI設計・改善）</span></h3>
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex gap-2"><div class="w-1.5 h-1.5 mt-2 rounded-full bg-[#0F3D7C]"></div>営業KPIの棚卸し／KPIツリー設計</li>
+                            <li class="flex gap-2"><div class="w-1.5 h-1.5 mt-2 rounded-full bg-[#0F3D7C]"></div>歩留まり分析（反響→契約）</li>
+                            <li class="flex gap-2"><div class="w-1.5 h-1.5 mt-2 rounded-full bg-[#0F3D7C]"></div>定例会の型化</li>
+                            <li class="flex gap-2"><div class="w-1.5 h-1.5 mt-2 rounded-full bg-[#0F3D7C]"></div>改善施策の提案・実行伴走</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Service B -->
+                <div class="border border-gray-200 rounded-lg overflow-hidden group hover:border-[#0F3D7C] transition-colors">
+                    <div class="h-2 bg-[#0F3D7C]"></div>
+                    <div class="p-8">
+                        <div class="mb-6 text-[#0F3D7C]">
+                            <i data-lucide="settings" class="w-12 h-12"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">業務効率化支援<br/><span class="text-base font-normal text-gray-500">（仕組み化）</span></h3>
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex gap-2"><div class="w-1.5 h-1.5 mt-2 rounded-full bg-[#0F3D7C]"></div>CRM／SFAの設計・運用整理</li>
+                            <li class="flex gap-2"><div class="w-1.5 h-1.5 mt-2 rounded-full bg-[#0F3D7C]"></div>スプレッドシート集計基盤構築</li>
+                            <li class="flex gap-2"><div class="w-1.5 h-1.5 mt-2 rounded-full bg-[#0F3D7C]"></div>経営・現場ダッシュボード構築</li>
+                            <li class="flex gap-2"><div class="w-1.5 h-1.5 mt-2 rounded-full bg-[#0F3D7C]"></div>業務フロー標準化、権限設計</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Service C -->
+                <div class="border border-gray-200 rounded-lg overflow-hidden group hover:border-[#0F3D7C] transition-colors">
+                    <div class="h-2 bg-[#0F3D7C]"></div>
+                    <div class="p-8">
+                        <div class="mb-6 text-[#0F3D7C]">
+                            <i data-lucide="map-pin" class="w-12 h-12"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">市場調査・マーケ<br/><span class="text-base font-normal text-gray-500">（戦略支援）</span></h3>
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex gap-2"><div class="w-1.5 h-1.5 mt-2 rounded-full bg-[#0F3D7C]"></div>商圏分析／競合調査</li>
+                            <li class="flex gap-2"><div class="w-1.5 h-1.5 mt-2 rounded-full bg-[#0F3D7C]"></div>集客導線の整理（広告〜接客）</li>
+                            <li class="flex gap-2"><div class="w-1.5 h-1.5 mt-2 rounded-full bg-[#0F3D7C]"></div>企画書・報告書の作成支援</li>
+                            <li class="flex gap-2"><div class="w-1.5 h-1.5 mt-2 rounded-full bg-[#0F3D7C]"></div>内製化支援・伴走支援</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies -->
+    <section id="cases" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">支援事例</h2>
+                <p class="text-gray-600">KPI設計と運用定着による改善実績の一部をご紹介します。</p>
+            </div>
+
+            <div class="space-y-8">
+                <!-- Case 1 -->
+                <div class="bg-white rounded-lg shadow-sm p-8 border-l-8 border-[#0F3D7C]">
+                    <div class="flex flex-col md:flex-row justify-between md:items-center mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">賃貸管理会社 <span class="text-sm font-normal text-gray-500 ml-2">（管理戸数：1,200戸）</span></h3>
+                        <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full w-fit mt-2 md:mt-0">業務効率化</span>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div>
+                            <h4 class="font-bold text-red-500 text-sm mb-2">課題</h4>
+                            <p class="text-sm text-gray-600">更新・解約や対応状況の可視化ができず、打ち手が曖昧。</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-blue-600 text-sm mb-2">施策</h4>
+                            <p class="text-sm text-gray-600">KPI定義の統一／ダッシュボード化／定例会の型化。</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-[#0F3D7C] text-sm mb-2">成果</h4>
+                            <div class="bg-gray-50 p-3 rounded">
+                                <p class="text-sm font-bold text-gray-800">入居率 89.6% → <span class="text-xl">95.4%</span></p>
+                                <p class="text-xs text-gray-500 mt-1">定例準備時間 8時間 → 2時間／週</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case 2 -->
+                <div class="bg-white rounded-lg shadow-sm p-8 border-l-8 border-[#0F3D7C]">
+                    <div class="flex flex-col md:flex-row justify-between md:items-center mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">投資用不動産の販売・仲介 <span class="text-sm font-normal text-gray-500 ml-2">（メンバー数：12名）</span></h3>
+                        <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full w-fit mt-2 md:mt-0">業績向上</span>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div>
+                            <h4 class="font-bold text-red-500 text-sm mb-2">課題</h4>
+                            <p class="text-sm text-gray-600">反響〜成約の歩留まりが把握できず、改善が属人的。</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-blue-600 text-sm mb-2">施策</h4>
+                            <p class="text-sm text-gray-600">営業KPIの分解／入力ルール整備／集計自動化。</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-[#0F3D7C] text-sm mb-2">成果</h4>
+                            <div class="bg-gray-50 p-3 rounded">
+                                <p class="text-sm font-bold text-gray-800">反響→面談歩留まり <span class="text-xl">+18%</span></p>
+                                <p class="text-xs text-gray-500 mt-1">レポート作成時間 6h → 1.5h</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case 3 -->
+                <div class="bg-white rounded-lg shadow-sm p-8 border-l-8 border-[#0F3D7C]">
+                    <div class="flex flex-col md:flex-row justify-between md:items-center mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">戸建分譲会社 <span class="text-sm font-normal text-gray-500 ml-2">（年商：20億円）</span></h3>
+                        <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full w-fit mt-2 md:mt-0">会議設計</span>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div>
+                            <h4 class="font-bold text-red-500 text-sm mb-2">課題</h4>
+                            <p class="text-sm text-gray-600">案件管理と集計が煩雑で、会議が報告会化。</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-blue-600 text-sm mb-2">施策</h4>
+                            <p class="text-sm text-gray-600">会議体の再設計／KPIモニタリング／運用ルール作成。</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-[#0F3D7C] text-sm mb-2">成果</h4>
+                            <div class="bg-gray-50 p-3 rounded">
+                                <p class="text-sm font-bold text-gray-800">会議時間 90分 → <span class="text-xl">60分</span></p>
+                                <p class="text-xs text-gray-500 mt-1">翌日決裁率 35% → 62%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us -->
+    <section id="reason" class="py-20 bg-gradient-to-b from-white to-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">選ばれる理由</h2>
+                <div class="w-16 h-1 mx-auto bg-gray-300"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center px-4">
+                    <div class="w-20 h-20 mx-auto bg-gray-100 rounded-full flex items-center justify-center mb-6">
+                        <i data-lucide="settings" class="w-10 h-10 text-[#0F3D7C]"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-3">提案で終わらず<br/>「運用できる仕組み」まで作る</h3>
+                    <p class="text-sm text-gray-600">絵に描いた餅ではなく、現場が実際に回せるフローを構築します。</p>
+                </div>
+                <div class="text-center px-4">
+                    <div class="w-20 h-20 mx-auto bg-gray-100 rounded-full flex items-center justify-center mb-6">
+                        <i data-lucide="users" class="w-10 h-10 text-[#0F3D7C]"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-3">KPI設計と<br/>現場定着をセットで支援</h3>
+                    <p class="text-sm text-gray-600">数字の定義だけでなく、誰がいつどう入力するかまで設計します。</p>
+                </div>
+                <div class="text-center px-4">
+                    <div class="w-20 h-20 mx-auto bg-gray-100 rounded-full flex items-center justify-center mb-6">
+                        <i data-lucide="bar-chart-3" class="w-10 h-10 text-[#0F3D7C]"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-3">実務で動く<br/>集計基盤を構築</h3>
+                    <p class="text-sm text-gray-600">CRMやスプレッドシート等を活用し、データが集まる環境を作ります。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process -->
+    <section id="process" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">進め方</h2>
+            </div>
+
+            <div class="relative">
+                <!-- Line for desktop -->
+                <div class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-gray-200 -z-10 transform -translate-y-1/2"></div>
+                
+                <div class="grid md:grid-cols-5 gap-4">
+                    <!-- Step 1 -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 text-center relative">
+                        <div class="w-8 h-8 rounded-full text-white flex items-center justify-center font-bold text-sm mx-auto mb-4 bg-[#0F3D7C]">1</div>
+                        <h4 class="font-bold text-gray-800 mb-2">お問い合わせ</h4>
+                        <p class="text-xs text-gray-500">メールにてヒアリング</p>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 text-center relative">
+                        <div class="w-8 h-8 rounded-full text-white flex items-center justify-center font-bold text-sm mx-auto mb-4 bg-[#0F3D7C]">2</div>
+                        <h4 class="font-bold text-gray-800 mb-2">現状分析</h4>
+                        <p class="text-xs text-gray-500">KPI・業務・データ確認</p>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 text-center relative">
+                        <div class="w-8 h-8 rounded-full text-white flex items-center justify-center font-bold text-sm mx-auto mb-4 bg-[#0F3D7C]">3</div>
+                        <h4 class="font-bold text-gray-800 mb-2">改善方針提示</h4>
+                        <p class="text-xs text-gray-500">ロードマップ作成</p>
+                    </div>
+                    <!-- Step 4 -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 text-center relative">
+                        <div class="w-8 h-8 rounded-full text-white flex items-center justify-center font-bold text-sm mx-auto mb-4 bg-[#0F3D7C]">4</div>
+                        <h4 class="font-bold text-gray-800 mb-2">実行支援</h4>
+                        <p class="text-xs text-gray-500">週次・隔週での伴走</p>
+                    </div>
+                    <!-- Step 5 -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 text-center relative">
+                        <div class="w-8 h-8 rounded-full text-white flex items-center justify-center font-bold text-sm mx-auto mb-4 bg-[#0F3D7C]">5</div>
+                        <h4 class="font-bold text-gray-800 mb-2">定着・内製化</h4>
+                        <p class="text-xs text-gray-500">マニュアル・会議設計</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-20 bg-gray-50">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">よくあるご質問</h2>
+            </div>
+
+            <div class="space-y-4">
+                <!-- Q1 -->
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                    <button class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 focus:outline-none" onclick="toggleFaq('faq-1')">
+                        <span class="font-bold text-gray-800">Q. 対応エリアはどこまでですか？</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 faq-icon" id="icon-faq-1"></i>
+                    </button>
+                    <div id="faq-1" class="hidden px-6 pb-4 pt-0 text-gray-600 text-sm leading-relaxed border-t border-gray-100 bg-gray-50/50">
+                        <div class="pt-4">A. オンラインで全国対応可能です。必要に応じて訪問も行います。</div>
+                    </div>
+                </div>
+                <!-- Q2 -->
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                    <button class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 focus:outline-none" onclick="toggleFaq('faq-2')">
+                        <span class="font-bold text-gray-800">Q. 小規模な組織でも依頼できますか？</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 faq-icon" id="icon-faq-2"></i>
+                    </button>
+                    <div id="faq-2" class="hidden px-6 pb-4 pt-0 text-gray-600 text-sm leading-relaxed border-t border-gray-100 bg-gray-50/50">
+                        <div class="pt-4">A. 可能です。メンバー数名〜数十名規模の実績も多数ございます。状況に合わせて支援範囲を柔軟に調整いたします。</div>
+                    </div>
+                </div>
+                <!-- Q3 -->
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                    <button class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 focus:outline-none" onclick="toggleFaq('faq-3')">
+                        <span class="font-bold text-gray-800">Q. 社内のデータが整っていなくても大丈夫ですか？</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 faq-icon" id="icon-faq-3"></i>
+                    </button>
+                    <div id="faq-3" class="hidden px-6 pb-4 pt-0 text-gray-600 text-sm leading-relaxed border-t border-gray-100 bg-gray-50/50">
+                        <div class="pt-4">A. 問題ありません。現状の運用整理から入り、どのようなデータを取得すべきかの定義から設計いたします。</div>
+                    </div>
+                </div>
+                <!-- Q4 -->
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                    <button class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 focus:outline-none" onclick="toggleFaq('faq-4')">
+                        <span class="font-bold text-gray-800">Q. CRMなどのツールが未整備でも相談できますか？</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 faq-icon" id="icon-faq-4"></i>
+                    </button>
+                    <div id="faq-4" class="hidden px-6 pb-4 pt-0 text-gray-600 text-sm leading-relaxed border-t border-gray-100 bg-gray-50/50">
+                        <div class="pt-4">A. 可能です。まずは現状の運用（スプレッドシート等）を整理し、必要に応じてツールの導入・設計のご提案も行います。</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 text-white relative overflow-hidden bg-[#0F3D7C]">
+        <!-- Decorative Circles -->
+        <div class="absolute top-0 left-0 w-64 h-64 bg-white opacity-5 rounded-full transform -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-white opacity-5 rounded-full transform translate-x-1/3 translate-y-1/3"></div>
+
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <h2 class="text-3xl font-bold mb-6">お問い合わせ</h2>
+            <p class="mb-10 text-blue-100 text-lg">
+                現状の課題や、目指したい姿についてお気軽にご相談ください。<br/>
+                まずはメールにてご連絡をお待ちしております。
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button 
-                onClick={openMailer}
-                className="px-8 py-4 rounded text-white font-bold text-lg shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2"
-                style={{ backgroundColor: colors.primary }}
-              >
-                <Mail className="w-5 h-5" />
-                お問い合わせ・相談
-              </button>
-              <div className="flex items-center text-sm text-gray-500 px-4">
-                ※不動産業界での支援実績多数。業種は幅広く対応可能。
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Issues Section */}
-      <section id="issues" className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4">こんな<span style={{ color: colors.primary }}>課題</span>はありませんか？</h2>
-            <div className="w-16 h-1 mx-auto" style={{ backgroundColor: colors.primary }}></div>
-          </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              { title: "KPIが形骸化している", desc: "KPIはあるが更新されず、経営の実態が見えていない。", icon: <TrendingUp className="w-8 h-8 text-red-500" /> },
-              { title: "集計が手作業", desc: "データを作るのに時間がかかり、意思決定が遅れる。", icon: <FileText className="w-8 h-8 text-red-500" /> },
-              { title: "成果が属人的", desc: "トップ営業マン頼みで、組織としての再現性がない。", icon: <Users className="w-8 h-8 text-red-500" /> },
-              { title: "会議がただの報告会", desc: "数字を読み上げるだけで、具体的な改善アクションが出ない。", icon: <Target className="w-8 h-8 text-red-500" /> },
-              { title: "現場が忙殺されている", desc: "仕組み化したいが、目の前の業務で手が回らない。", icon: <Settings className="w-8 h-8 text-red-500" /> },
-            ].map((item, idx) => (
-              <div key={idx} className="bg-white p-8 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-                <div className="bg-red-50 w-16 h-16 rounded-full flex items-center justify-center mb-6">
-                  {item.icon}
-                </div>
-                <h3 className="text-xl font-bold mb-3 text-gray-800">{item.title}</h3>
-                <p className="text-gray-600">{item.desc}</p>
-              </div>
-            ))}
             
-            {/* Value Proposition Box */}
-            <div className="bg-gradient-to-br from-[#0F3D7C] to-[#1a5bb5] p-8 rounded-lg shadow-lg text-white transform md:scale-105">
-              <h3 className="text-xl font-bold mb-4 border-b border-white/30 pb-2">解決後の未来</h3>
-              <ul className="space-y-4">
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="w-6 h-6 flex-shrink-0 text-blue-200" />
-                  <span>経営判断に必要な数字が、同じ定義で揃う</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="w-6 h-6 flex-shrink-0 text-blue-200" />
-                  <span>ボトルネックが明確になり、打ち手を選べる</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="w-6 h-6 flex-shrink-0 text-blue-200" />
-                  <span>人が増えても崩れない、成長の土台ができる</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Services Section */}
-      <section id="service" className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4">サービス内容</h2>
-            <p className="text-gray-600">業績向上・業務効率化・マーケティングの3軸で支援します</p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Service A */}
-            <div className="border border-gray-200 rounded-lg overflow-hidden group hover:border-[#0F3D7C] transition-colors">
-              <div className="h-2 bg-[#0F3D7C]"></div>
-              <div className="p-8">
-                <div className="mb-6 text-[#0F3D7C]">
-                  <TrendingUp className="w-12 h-12" />
-                </div>
-                <h3 className="text-2xl font-bold mb-4">業績向上支援<br/><span className="text-base font-normal text-gray-500">（KPI設計・改善）</span></h3>
-                <ul className="space-y-3 text-gray-600">
-                  <li className="flex gap-2"><div className="w-1.5 h-1.5 mt-2 rounded-full bg-[#0F3D7C]"></div>営業KPIの棚卸し／KPIツリー設計</li>
-                  <li className="flex gap-2"><div className="w-1.5 h-1.5 mt-2 rounded-full bg-[#0F3D7C]"></div>歩留まり分析（反響→契約）</li>
-                  <li className="flex gap-2"><div className="w-1.5 h-1.5 mt-2 rounded-full bg-[#0F3D7C]"></div>定例会の型化</li>
-                  <li className="flex gap-2"><div className="w-1.5 h-1.5 mt-2 rounded-full bg-[#0F3D7C]"></div>改善施策の提案・実行伴走</li>
-                </ul>
-              </div>
-            </div>
-
-            {/* Service B */}
-            <div className="border border-gray-200 rounded-lg overflow-hidden group hover:border-[#0F3D7C] transition-colors">
-              <div className="h-2 bg-[#0F3D7C]"></div>
-              <div className="p-8">
-                <div className="mb-6 text-[#0F3D7C]">
-                  <Settings className="w-12 h-12" />
-                </div>
-                <h3 className="text-2xl font-bold mb-4">業務効率化支援<br/><span className="text-base font-normal text-gray-500">（仕組み化）</span></h3>
-                <ul className="space-y-3 text-gray-600">
-                  <li className="flex gap-2"><div className="w-1.5 h-1.5 mt-2 rounded-full bg-[#0F3D7C]"></div>CRM／SFAの設計・運用整理</li>
-                  <li className="flex gap-2"><div className="w-1.5 h-1.5 mt-2 rounded-full bg-[#0F3D7C]"></div>スプレッドシート集計基盤構築</li>
-                  <li className="flex gap-2"><div className="w-1.5 h-1.5 mt-2 rounded-full bg-[#0F3D7C]"></div>経営・現場ダッシュボード構築</li>
-                  <li className="flex gap-2"><div className="w-1.5 h-1.5 mt-2 rounded-full bg-[#0F3D7C]"></div>業務フロー標準化、権限設計</li>
-                </ul>
-              </div>
-            </div>
-
-            {/* Service C */}
-            <div className="border border-gray-200 rounded-lg overflow-hidden group hover:border-[#0F3D7C] transition-colors">
-              <div className="h-2 bg-[#0F3D7C]"></div>
-              <div className="p-8">
-                <div className="mb-6 text-[#0F3D7C]">
-                  <MapPin className="w-12 h-12" />
-                </div>
-                <h3 className="text-2xl font-bold mb-4">市場調査・マーケ<br/><span className="text-base font-normal text-gray-500">（戦略支援）</span></h3>
-                <ul className="space-y-3 text-gray-600">
-                  <li className="flex gap-2"><div className="w-1.5 h-1.5 mt-2 rounded-full bg-[#0F3D7C]"></div>商圏分析／競合調査</li>
-                  <li className="flex gap-2"><div className="w-1.5 h-1.5 mt-2 rounded-full bg-[#0F3D7C]"></div>集客導線の整理（広告〜接客）</li>
-                  <li className="flex gap-2"><div className="w-1.5 h-1.5 mt-2 rounded-full bg-[#0F3D7C]"></div>企画書・報告書の作成支援</li>
-                  <li className="flex gap-2"><div className="w-1.5 h-1.5 mt-2 rounded-full bg-[#0F3D7C]"></div>内製化支援・伴走支援</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Case Studies */}
-      <section id="cases" className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4">支援事例</h2>
-            <p className="text-gray-600">KPI設計と運用定着による改善実績の一部をご紹介します。</p>
-          </div>
-
-          <div className="space-y-8">
-            {/* Case 1 */}
-            <div className="bg-white rounded-lg shadow-sm p-8 border-l-8" style={{ borderColor: colors.primary }}>
-              <div className="flex flex-col md:flex-row justify-between md:items-center mb-4">
-                <h3 className="text-xl font-bold text-gray-800">賃貸管理会社 <span className="text-sm font-normal text-gray-500 ml-2">（管理戸数：1,200戸）</span></h3>
-                <span className="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full w-fit mt-2 md:mt-0">業務効率化</span>
-              </div>
-              <div className="grid md:grid-cols-3 gap-6">
-                <div>
-                  <h4 className="font-bold text-red-500 text-sm mb-2">課題</h4>
-                  <p className="text-sm text-gray-600">更新・解約や対応状況の可視化ができず、打ち手が曖昧。</p>
-                </div>
-                <div>
-                  <h4 className="font-bold text-blue-600 text-sm mb-2">施策</h4>
-                  <p className="text-sm text-gray-600">KPI定義の統一／ダッシュボード化／定例会の型化。</p>
-                </div>
-                <div>
-                  <h4 className="font-bold text-[#0F3D7C] text-sm mb-2">成果</h4>
-                  <div className="bg-gray-50 p-3 rounded">
-                    <p className="text-sm font-bold text-gray-800">入居率 89.6% → <span className="text-xl">95.4%</span></p>
-                    <p className="text-xs text-gray-500 mt-1">定例準備時間 8時間 → 2時間／週</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Case 2 */}
-            <div className="bg-white rounded-lg shadow-sm p-8 border-l-8" style={{ borderColor: colors.primary }}>
-              <div className="flex flex-col md:flex-row justify-between md:items-center mb-4">
-                <h3 className="text-xl font-bold text-gray-800">投資用不動産の販売・仲介 <span className="text-sm font-normal text-gray-500 ml-2">（メンバー数：12名）</span></h3>
-                <span className="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full w-fit mt-2 md:mt-0">業績向上</span>
-              </div>
-              <div className="grid md:grid-cols-3 gap-6">
-                <div>
-                  <h4 className="font-bold text-red-500 text-sm mb-2">課題</h4>
-                  <p className="text-sm text-gray-600">反響〜成約の歩留まりが把握できず、改善が属人的。</p>
-                </div>
-                <div>
-                  <h4 className="font-bold text-blue-600 text-sm mb-2">施策</h4>
-                  <p className="text-sm text-gray-600">営業KPIの分解／入力ルール整備／集計自動化。</p>
-                </div>
-                <div>
-                  <h4 className="font-bold text-[#0F3D7C] text-sm mb-2">成果</h4>
-                  <div className="bg-gray-50 p-3 rounded">
-                    <p className="text-sm font-bold text-gray-800">反響→面談歩留まり <span className="text-xl">+18%</span></p>
-                    <p className="text-xs text-gray-500 mt-1">レポート作成時間 6h → 1.5h</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Case 3 */}
-            <div className="bg-white rounded-lg shadow-sm p-8 border-l-8" style={{ borderColor: colors.primary }}>
-              <div className="flex flex-col md:flex-row justify-between md:items-center mb-4">
-                <h3 className="text-xl font-bold text-gray-800">戸建分譲会社 <span className="text-sm font-normal text-gray-500 ml-2">（年商：20億円）</span></h3>
-                <span className="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full w-fit mt-2 md:mt-0">会議設計</span>
-              </div>
-              <div className="grid md:grid-cols-3 gap-6">
-                <div>
-                  <h4 className="font-bold text-red-500 text-sm mb-2">課題</h4>
-                  <p className="text-sm text-gray-600">案件管理と集計が煩雑で、会議が報告会化。</p>
-                </div>
-                <div>
-                  <h4 className="font-bold text-blue-600 text-sm mb-2">施策</h4>
-                  <p className="text-sm text-gray-600">会議体の再設計／KPIモニタリング／運用ルール作成。</p>
-                </div>
-                <div>
-                  <h4 className="font-bold text-[#0F3D7C] text-sm mb-2">成果</h4>
-                  <div className="bg-gray-50 p-3 rounded">
-                    <p className="text-sm font-bold text-gray-800">会議時間 90分 → <span className="text-xl">60分</span></p>
-                    <p className="text-xs text-gray-500 mt-1">翌日決裁率 35% → 62%</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* Why Us */}
-      <section id="reason" className="py-20 bg-gradient-to-b from-white to-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4">選ばれる理由</h2>
-            <div className="w-16 h-1 mx-auto bg-gray-300"></div>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center px-4">
-              <div className="w-20 h-20 mx-auto bg-gray-100 rounded-full flex items-center justify-center mb-6">
-                <Settings className="w-10 h-10 text-[#0F3D7C]" />
-              </div>
-              <h3 className="text-lg font-bold mb-3">提案で終わらず<br/>「運用できる仕組み」まで作る</h3>
-              <p className="text-sm text-gray-600">絵に描いた餅ではなく、現場が実際に回せるフローを構築します。</p>
-            </div>
-            <div className="text-center px-4">
-              <div className="w-20 h-20 mx-auto bg-gray-100 rounded-full flex items-center justify-center mb-6">
-                <Users className="w-10 h-10 text-[#0F3D7C]" />
-              </div>
-              <h3 className="text-lg font-bold mb-3">KPI設計と<br/>現場定着をセットで支援</h3>
-              <p className="text-sm text-gray-600">数字の定義だけでなく、誰がいつどう入力するかまで設計します。</p>
-            </div>
-            <div className="text-center px-4">
-              <div className="w-20 h-20 mx-auto bg-gray-100 rounded-full flex items-center justify-center mb-6">
-                <BarChart3 className="w-10 h-10 text-[#0F3D7C]" />
-              </div>
-              <h3 className="text-lg font-bold mb-3">実務で動く<br/>集計基盤を構築</h3>
-              <p className="text-sm text-gray-600">CRMやスプレッドシート等を活用し、データが集まる環境を作ります。</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Process */}
-      <section id="process" className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4">進め方</h2>
-          </div>
-
-          <div className="relative">
-            {/* Line for desktop */}
-            <div className="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-gray-200 -z-10 transform -translate-y-1/2"></div>
-            
-            <div className="grid md:grid-cols-5 gap-4">
-              {['お問い合わせ', '現状分析', '改善方針提示', '実行支援', '定着・内製化'].map((step, idx) => (
-                <div key={idx} className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 text-center relative">
-                  <div className="w-8 h-8 rounded-full text-white flex items-center justify-center font-bold text-sm mx-auto mb-4" style={{ backgroundColor: colors.primary }}>
-                    {idx + 1}
-                  </div>
-                  <h4 className="font-bold text-gray-800 mb-2">{step}</h4>
-                  <p className="text-xs text-gray-500">
-                    {idx === 0 && "メールにてヒアリング"}
-                    {idx === 1 && "KPI・業務・データ確認"}
-                    {idx === 2 && "ロードマップ作成"}
-                    {idx === 3 && "週次・隔週での伴走"}
-                    {idx === 4 && "マニュアル・会議設計"}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section id="faq" className="py-20 bg-gray-50">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">よくあるご質問</h2>
-          </div>
-
-          <div className="space-y-4">
-            {[
-              { q: "対応エリアはどこまでですか？", a: "オンラインで全国対応可能です。必要に応じて訪問も行います。" },
-              { q: "小規模な組織でも依頼できますか？", a: "可能です。メンバー数名〜数十名規模の実績も多数ございます。状況に合わせて支援範囲を柔軟に調整いたします。" },
-              { q: "社内のデータが整っていなくても大丈夫ですか？", a: "問題ありません。現状の運用整理から入り、どのようなデータを取得すべきかの定義から設計いたします。" },
-              { q: "CRMなどのツールが未整備でも相談できますか？", a: "可能です。まずは現状の運用（スプレッドシート等）を整理し、必要に応じてツールの導入・設計のご提案も行います。" }
-            ].map((item, idx) => (
-              <div key={idx} className="bg-white rounded-lg shadow-sm overflow-hidden">
-                <button 
-                  onClick={() => toggleFaq(idx)}
-                  className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 focus:outline-none"
+            <div class="bg-white/10 backdrop-blur-md p-8 rounded-lg max-w-xl mx-auto border border-white/20">
+                <i data-lucide="mail" class="w-10 h-10 mx-auto mb-4 text-blue-200"></i>
+                <a 
+                    href="mailto:contact@alpha-brain.jp" 
+                    class="text-2xl md:text-3xl font-bold hover:text-blue-200 transition-colors block break-all"
                 >
-                  <span className="font-bold text-gray-800">Q. {item.q}</span>
-                  {openFaq === idx ? <ChevronUp className="w-5 h-5 text-gray-400" /> : <ChevronDown className="w-5 h-5 text-gray-400" />}
-                </button>
-                {openFaq === idx && (
-                  <div className="px-6 pb-4 pt-0 text-gray-600 text-sm leading-relaxed border-t border-gray-100 bg-gray-50/50">
-                    <div className="pt-4">A. {item.a}</div>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section id="contact" className="py-20 text-white relative overflow-hidden" style={{ backgroundColor: colors.primary }}>
-        {/* Decorative Circles */}
-        <div className="absolute top-0 left-0 w-64 h-64 bg-white opacity-5 rounded-full transform -translate-x-1/2 -translate-y-1/2"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-white opacity-5 rounded-full transform translate-x-1/3 translate-y-1/3"></div>
-
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <h2 className="text-3xl font-bold mb-6">お問い合わせ</h2>
-          <p className="mb-10 text-blue-100 text-lg">
-            現状の課題や、目指したい姿についてお気軽にご相談ください。<br/>
-            まずはメールにてご連絡をお待ちしております。
-          </p>
-          
-          <div className="bg-white/10 backdrop-blur-md p-8 rounded-lg max-w-xl mx-auto border border-white/20">
-            <Mail className="w-10 h-10 mx-auto mb-4 text-blue-200" />
-            <a 
-              href="mailto:contact@alpha-brain.jp" 
-              className="text-2xl md:text-3xl font-bold hover:text-blue-200 transition-colors block break-all"
-            >
-              contact@alpha-brain.jp
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer / Company Info */}
-      <footer className="bg-gray-900 text-gray-400 py-12 border-t border-gray-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div>
-              <div className="text-white text-2xl font-bold mb-4 tracking-widest flex items-center gap-2">
-                 {/* Footer Logo text */}
-                 ALPHA BRAIN
-              </div>
-              <div className="space-y-2 text-sm">
-                <p className="flex items-start gap-2">
-                  <Building2 className="w-4 h-4 mt-1 flex-shrink-0" />
-                  アルファーブレイン合同会社
-                </p>
-                <p className="flex items-start gap-2">
-                  <MapPin className="w-4 h-4 mt-1 flex-shrink-0" />
-                  〒160-0023 東京都新宿区西新宿3-3-13 西新宿水間ビル6階
-                </p>
-                <p className="flex items-start gap-2">
-                  <TrendingUp className="w-4 h-4 mt-1 flex-shrink-0" />
-                  経営コンサルティング（業績向上／業務効率化／市場調査）
-                </p>
-              </div>
+                    contact@alpha-brain.jp
+                </a>
             </div>
-            <div className="text-right text-xs">
-              <p className="mb-2">設立：2021年8月</p>
-              <p>&copy; Alpha Brain LLC. All Rights Reserved.</p>
-            </div>
-          </div>
         </div>
-      </footer>
-    </div>
-  );
-};
+    </section>
 
-export default AlphaBrainHP;
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <div class="text-white text-2xl font-bold mb-4 tracking-widest flex items-center gap-2 futura-font">
+                         ALPHA BRAIN
+                    </div>
+                    <div class="space-y-2 text-sm">
+                        <p class="flex items-start gap-2">
+                            <i data-lucide="building-2" class="w-4 h-4 mt-1 flex-shrink-0"></i>
+                            アルファーブレイン合同会社
+                        </p>
+                        <p class="flex items-start gap-2">
+                            <i data-lucide="map-pin" class="w-4 h-4 mt-1 flex-shrink-0"></i>
+                            〒160-0023 東京都新宿区西新宿3-3-13 西新宿水間ビル6階
+                        </p>
+                        <p class="flex items-start gap-2">
+                            <i data-lucide="trending-up" class="w-4 h-4 mt-1 flex-shrink-0"></i>
+                            経営コンサルティング（業績向上／業務効率化／市場調査）
+                        </p>
+                    </div>
+                </div>
+                <div class="text-right text-xs">
+                    <p class="mb-2">設立：2021年8月</p>
+                    <p>&copy; Alpha Brain LLC. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // 1. Smooth Scroll with Offset for Fixed Header
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                // Adjust for header height
+                const headerOffset = 80;
+                const elementPosition = element.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: "smooth"
+                });
+                
+                // Close mobile menu if open
+                closeMobileMenu();
+            }
+        }
+
+        // 2. Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                menuIcon.classList.add('hidden');
+                closeIcon.classList.remove('hidden');
+            } else {
+                menu.classList.add('hidden');
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+            }
+        }
+
+        function closeMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+            
+            menu.classList.add('hidden');
+            menuIcon.classList.remove('hidden');
+            closeIcon.classList.add('hidden');
+        }
+
+        // 3. FAQ Accordion Toggle
+        function toggleFaq(id) {
+            const content = document.getElementById(id);
+            const icon = document.getElementById('icon-' + id);
+            
+            if (content.classList.contains('hidden')) {
+                // Close all others first (Optional behavior)
+                // document.querySelectorAll('[id^="faq-"]').forEach(el => el.classList.add('hidden'));
+                
+                content.classList.remove('hidden');
+                // Rotate icon up
+                icon.classList.remove('lucide-chevron-down');
+                icon.classList.add('lucide-chevron-up');
+                // Re-render icon to apply class change (Lucide specific)
+                lucide.createIcons();
+            } else {
+                content.classList.add('hidden');
+                // Rotate icon down
+                icon.classList.remove('lucide-chevron-up');
+                icon.classList.add('lucide-chevron-down');
+                lucide.createIcons();
+            }
+        }
+
+        // 4. Logo Fallback Handler
+        function handleLogoError() {
+            const img = document.getElementById('header-logo-img');
+            const text = document.getElementById('header-logo-text');
+            
+            if(img && text) {
+                img.style.display = 'none';
+                text.classList.remove('hidden');
+            }
+        }
+
+        // 5. Open Mailer
+        function openMailer() {
+            window.location.href = "mailto:contact@alpha-brain.jp";
+            closeMobileMenu();
+        }
+    </script>
+</body>
+</html>
