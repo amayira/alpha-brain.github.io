@@ -19,23 +19,22 @@
         .futura-font {
             font-family: 'Futura', sans-serif;
         }
-        /* Custom Colors config for Tailwind */
-        <script>
-            tailwind.config = {
-                theme: {
-                    extend: {
-                        colors: {
-                            primary: '#0F3D7C',
-                        }
-                    }
-                }
-            }
-        </script>
         /* Smooth scrolling for anchor links */
         html {
             scroll-behavior: smooth;
         }
     </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0F3D7C',
+                    }
+                }
+            }
+        }
+    </script>
 </head>
 <body class="bg-white text-gray-700 font-sans antialiased">
 
@@ -106,16 +105,18 @@
         <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-72 h-72 rounded-full opacity-5 bg-gray-400"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="lg:w-2/3">
-                <h1 class="text-4xl lg:text-6xl font-bold leading-tight mb-6 text-gray-900">
-                    <span class="block mb-2 text-xl lg:text-2xl font-medium text-gray-500">不動産会社の“数字と業務”を整えて、</span>
-                    <span class="text-[#0F3D7C]">利益が残る仕組み</span>に変える。
+            <div class="lg:w-3/4">
+                <h1 class="text-3xl lg:text-5xl font-bold leading-tight mb-8 text-gray-900">
+                    <span class="block mb-3 text-lg lg:text-xl font-medium text-gray-500 tracking-wider">
+                        セールス・マーケティング・業務効率化(DX)に精通した
+                    </span>
+                    御社の<span class="text-[#0F3D7C] text-4xl lg:text-6xl">「外部 経営企画室」</span>。
                 </h1>
                 <p class="text-lg lg:text-xl text-gray-600 mb-10 leading-relaxed border-l-4 pl-6 border-[#0F3D7C]">
-                    営業KPIの設計・可視化から、CRM／スプレッドシート等による集計基盤の構築、<br class="hidden lg:block"/>
-                    現場に定着する運用設計まで。<br />
-                    「担当者ガチャ」「手作業の集計」「意思決定の遅れ」を、<br class="hidden lg:block"/>
-                    再現性ある仕組みに変えます。
+                    <span class="font-bold text-gray-800">数字と業務を整え、利益が残る仕組みに変える。</span><br/><br/>
+                    経営者の右腕として、営業KPIの設計から<br class="hidden lg:block"/>
+                    集計基盤（CRM/DX）の構築、現場への定着までを一気通貫で支援。<br />
+                    単なる助言で終わらず、実務を動かすパートナーとして機能します。
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4">
                     <button 
@@ -138,7 +139,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-bold mb-4">こんな<span class="text-[#0F3D7C]">課題</span>はありませんか？</h2>
-                <div class="w-16 h-1 mx-auto bg-[#0F3D7C]"></div>
+                <p class="text-gray-600">経営企画のリソースが不足している企業様によくある悩みです</p>
+                <div class="w-16 h-1 mx-auto bg-[#0F3D7C] mt-4"></div>
             </div>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -210,18 +212,18 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-bold mb-4">サービス内容</h2>
-                <p class="text-gray-600">業績向上・業務効率化・マーケティングの3軸で支援します</p>
+                <p class="text-gray-600">経営企画室として、3つの領域を横断的に支援します</p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Service A -->
-                <div class="border border-gray-200 rounded-lg overflow-hidden group hover:border-[#0F3D7C] transition-colors">
+                <div class="border border-gray-200 rounded-lg overflow-hidden group hover:border-[#0F3D7C] transition-colors bg-white">
                     <div class="h-2 bg-[#0F3D7C]"></div>
                     <div class="p-8">
                         <div class="mb-6 text-[#0F3D7C]">
                             <i data-lucide="trending-up" class="w-12 h-12"></i>
                         </div>
-                        <h3 class="text-2xl font-bold mb-4">業績向上支援<br/><span class="text-base font-normal text-gray-500">（KPI設計・改善）</span></h3>
+                        <h3 class="text-2xl font-bold mb-4">業績向上支援<br/><span class="text-base font-normal text-gray-500">（セールス・KPI）</span></h3>
                         <ul class="space-y-3 text-gray-600">
                             <li class="flex gap-2"><div class="w-1.5 h-1.5 mt-2 rounded-full bg-[#0F3D7C]"></div>営業KPIの棚卸し／KPIツリー設計</li>
                             <li class="flex gap-2"><div class="w-1.5 h-1.5 mt-2 rounded-full bg-[#0F3D7C]"></div>歩留まり分析（反響→契約）</li>
@@ -232,13 +234,13 @@
                 </div>
 
                 <!-- Service B -->
-                <div class="border border-gray-200 rounded-lg overflow-hidden group hover:border-[#0F3D7C] transition-colors">
+                <div class="border border-gray-200 rounded-lg overflow-hidden group hover:border-[#0F3D7C] transition-colors bg-white">
                     <div class="h-2 bg-[#0F3D7C]"></div>
                     <div class="p-8">
                         <div class="mb-6 text-[#0F3D7C]">
                             <i data-lucide="settings" class="w-12 h-12"></i>
                         </div>
-                        <h3 class="text-2xl font-bold mb-4">業務効率化支援<br/><span class="text-base font-normal text-gray-500">（仕組み化）</span></h3>
+                        <h3 class="text-2xl font-bold mb-4">業務効率化支援<br/><span class="text-base font-normal text-gray-500">（仕組み化・DX）</span></h3>
                         <ul class="space-y-3 text-gray-600">
                             <li class="flex gap-2"><div class="w-1.5 h-1.5 mt-2 rounded-full bg-[#0F3D7C]"></div>CRM／SFAの設計・運用整理</li>
                             <li class="flex gap-2"><div class="w-1.5 h-1.5 mt-2 rounded-full bg-[#0F3D7C]"></div>スプレッドシート集計基盤構築</li>
@@ -249,7 +251,7 @@
                 </div>
 
                 <!-- Service C -->
-                <div class="border border-gray-200 rounded-lg overflow-hidden group hover:border-[#0F3D7C] transition-colors">
+                <div class="border border-gray-200 rounded-lg overflow-hidden group hover:border-[#0F3D7C] transition-colors bg-white">
                     <div class="h-2 bg-[#0F3D7C]"></div>
                     <div class="p-8">
                         <div class="mb-6 text-[#0F3D7C]">
@@ -368,22 +370,22 @@
                     <div class="w-20 h-20 mx-auto bg-gray-100 rounded-full flex items-center justify-center mb-6">
                         <i data-lucide="settings" class="w-10 h-10 text-[#0F3D7C]"></i>
                     </div>
-                    <h3 class="text-lg font-bold mb-3">提案で終わらず<br/>「運用できる仕組み」まで作る</h3>
-                    <p class="text-sm text-gray-600">絵に描いた餅ではなく、現場が実際に回せるフローを構築します。</p>
+                    <h3 class="text-lg font-bold mb-3">「経営企画室」として<br/>運用・定着までコミット</h3>
+                    <p class="text-sm text-gray-600">単なるツール導入や提案で終わらず、現場が実際に回せるフローまで構築します。</p>
                 </div>
                 <div class="text-center px-4">
                     <div class="w-20 h-20 mx-auto bg-gray-100 rounded-full flex items-center justify-center mb-6">
                         <i data-lucide="users" class="w-10 h-10 text-[#0F3D7C]"></i>
                     </div>
-                    <h3 class="text-lg font-bold mb-3">KPI設計と<br/>現場定着をセットで支援</h3>
-                    <p class="text-sm text-gray-600">数字の定義だけでなく、誰がいつどう入力するかまで設計します。</p>
+                    <h3 class="text-lg font-bold mb-3">セールス×DXの<br/>実践的なノウハウ</h3>
+                    <p class="text-sm text-gray-600">営業の現場感とDX（効率化）の両軸から、最適な仕組みを設計します。</p>
                 </div>
                 <div class="text-center px-4">
                     <div class="w-20 h-20 mx-auto bg-gray-100 rounded-full flex items-center justify-center mb-6">
                         <i data-lucide="bar-chart-3" class="w-10 h-10 text-[#0F3D7C]"></i>
                     </div>
                     <h3 class="text-lg font-bold mb-3">実務で動く<br/>集計基盤を構築</h3>
-                    <p class="text-sm text-gray-600">CRMやスプレッドシート等を活用し、データが集まる環境を作ります。</p>
+                    <p class="text-sm text-gray-600">CRMやスプレッドシート等を活用し、データが自然と集まる環境を作ります。</p>
                 </div>
             </div>
         </div>
