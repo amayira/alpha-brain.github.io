@@ -368,8 +368,8 @@
                 body: params.toString()
             });
             const data = await res.json().catch(() => ({}));
-            // ステータス200なら成功扱い（file:// や一部環境ではレスポンス本文が読めないことがある）
-            const isSuccess = res.status === 200 && (data.result === 'success' || !data.result);
+            // ステータス200＝サーバー側で処理済み。本文が読めない環境でも成功表示する
+            const isSuccess = res.status === 200;
             if (isSuccess) {
                 showMessage(msgEl, '送信が完了しました。ご登録のメールアドレス宛にレポートをお送りします。', 'success');
                 document.getElementById('lp-form').reset();
