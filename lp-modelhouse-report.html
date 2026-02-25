@@ -367,16 +367,22 @@
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 body: params.toString()
             });
-            const data = await res.json().catch(() => ({}));
-            // ステータス200＝サーバー側で処理済み。本文が読めない環境でも成功表示する
-            const isSuccess = res.status === 200;
-            if (isSuccess) {
+            const rawText = await res.text();
+            const data = (function() { try { return JSON.parse(rawText); } catch(_) { return {}; } })();
+            const status = res.status;
+            if (status === 200) {
                 showMessage(msgEl, '送信が完了しました。ご登録のメールアドレス宛にレポートをお送りします。', 'success');
                 document.getElementById('lp-form').reset();
+            } else if (status === 0) {
+                // 0 = CORS/ネットワークでレスポンスを読めないが、送信は届いていることがある
+                showMessage(msgEl, '送信を受け付けました。ご登録のメールアドレスにレポートをお送りします。届かない場合はお問い合わせください。', 'success');
+                document.getElementById('lp-form').reset();
             } else {
+                console.warn('LP form: status=' + status + ', body=' + rawText.slice(0, 200));
                 showMessage(msgEl, data.message || '送信に失敗しました。しばらく経ってから再度お試しください。', 'error');
             }
         } catch (err) {
+            console.warn('LP form error:', err);
             showMessage(msgEl, '送信に失敗しました。しばらく経ってから再度お試しください。', 'error');
         }
 
