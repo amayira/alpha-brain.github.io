@@ -11,6 +11,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>【住宅会社経営層向け】稼げるモデルハウス成功事例レポート無料ダウンロード</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;700;900&display=swap" rel="stylesheet">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <script>
@@ -18,148 +24,295 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#1A2B4C', // 信頼感のあるネイビー
-                        secondary: '#C5A059', // 高級感のあるゴールド
-                        accent: '#E63946', // コンバージョン用レッド
+                        primary: '#1A2B4C',
+                        secondary: '#C5A059',
+                        accent: '#E63946',
                         light: '#F8FAFC',
                     },
                     fontFamily: {
-                        sans: ['"Helvetica Neue"', 'Arial', '"Hiragino Kaku Gothic ProN"', '"Hiragino Sans"', 'Meiryo', 'sans-serif'],
+                        sans: ['"Noto Sans JP"', '"Helvetica Neue"', 'Arial', '"Hiragino Kaku Gothic ProN"', '"Hiragino Sans"', 'Meiryo', 'sans-serif'],
+                        serif: ['"Noto Serif JP"', 'Georgia', 'serif'],
                     }
                 }
             }
         }
     </script>
     <style>
+        /* ----- Hero ----- */
         .hero-bg {
             background-color: #1A2B4C;
-            background-image: linear-gradient(rgba(26, 43, 76, 0.25), rgba(26, 43, 76, 0.25)), url('FV.jpg');
+            background-image:
+                linear-gradient(rgba(8, 15, 38, 0.62), rgba(8, 15, 38, 0.70)),
+                url('FV.jpg');
             background-size: cover;
             background-position: center;
         }
         .hero-text-shadow {
-            text-shadow: 0 1px 3px rgba(0,0,0,0.8), 0 2px 12px rgba(0,0,0,0.6);
+            text-shadow: 0 1px 4px rgba(0,0,0,0.45), 0 2px 16px rgba(0,0,0,0.25);
         }
         .hero-text-shadow-sm {
-            text-shadow: 0 1px 2px rgba(0,0,0,0.9), 0 2px 6px rgba(0,0,0,0.7);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.6);
         }
-        .reason-img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 0.75rem;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+        /* ----- Scroll Reveal ----- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(26px);
+            transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .reason-img:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        .reveal.visible { opacity: 1; transform: none; }
+        .reveal-d1 { transition-delay: 0.08s; }
+        .reveal-d2 { transition-delay: 0.18s; }
+        .reveal-d3 { transition-delay: 0.28s; }
+
+        /* ----- Problem Cards ----- */
+        .problem-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem 1.75rem 1.75rem;
+            border: 1px solid rgba(0,0,0,0.06);
+            box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                        box-shadow 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            text-align: left;
         }
-        .highlight-text {
-            background: linear-gradient(transparent 60%, #FEFCBF 40%);
+        .problem-card::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #C5A059 0%, #E8D4A0 100%);
         }
-        /* CTAボタン：ホバー時に矢印が右に動く */
-        .btn-cta-arrow {
+        .problem-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 48px rgba(26,43,76,0.12);
+        }
+        .problem-bg-num {
+            font-family: 'Noto Serif JP', Georgia, serif;
+            font-size: 5.5rem;
+            font-weight: 900;
+            line-height: 1;
+            color: rgba(197,160,89,0.10);
+            position: absolute;
+            right: 0.75rem;
+            bottom: 0.25rem;
+            letter-spacing: -0.03em;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        /* ----- Section divider line ----- */
+        .section-line {
+            width: 1px;
+            height: 3.5rem;
+            background: linear-gradient(to bottom, transparent, #d1d5db 50%, transparent);
+            margin: 0 auto;
+        }
+
+        /* ----- Reason step label ----- */
+        .reason-step {
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
+            gap: 0.625rem;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: #C5A059;
+            margin-bottom: 1rem;
         }
-        .btn-cta-arrow .fa-arrow-right {
-            transition: transform 0.25s ease;
+        .reason-step-bar {
+            display: inline-block;
+            width: 2rem;
+            height: 1px;
+            background: #C5A059;
         }
+
+        /* ----- Reason images ----- */
+        .reason-img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 16px;
+            box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                        box-shadow 0.4s ease;
+        }
+        .reason-img:hover {
+            transform: translateY(-6px) scale(1.01);
+            box-shadow: 0 24px 48px rgba(0,0,0,0.15);
+        }
+
+        /* ----- Highlight text ----- */
+        .highlight-text {
+            background: linear-gradient(transparent 58%, rgba(197,160,89,0.22) 42%);
+        }
+
+        /* ----- CTA button arrow ----- */
+        .btn-cta-arrow { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; }
+        .btn-cta-arrow .fa-arrow-right { transition: transform 0.25s ease; }
         .btn-cta-arrow:hover .fa-arrow-right,
-        .btn-cta-arrow:focus .fa-arrow-right {
-            transform: translateX(4px);
+        .btn-cta-arrow:focus .fa-arrow-right { transform: translateX(4px); }
+        button.btn-cta-arrow:disabled .fa-arrow-right { transform: none; }
+
+        /* ----- Document list ----- */
+        .doc-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.25rem;
+            padding: 1.5rem 0;
         }
-        button.btn-cta-arrow:disabled .fa-arrow-right {
-            transform: none;
+        .doc-item + .doc-item {
+            border-top: 1px solid rgba(255,255,255,0.08);
         }
+        .doc-num {
+            font-family: 'Noto Serif JP', Georgia, serif;
+            font-size: 1.625rem;
+            font-weight: 900;
+            color: #C5A059;
+            line-height: 1.1;
+            min-width: 2.75rem;
+        }
+
+        /* ----- Form fields ----- */
+        .form-field {
+            width: 100%;
+            border: 1.5px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 0.875rem 1rem;
+            font-family: inherit;
+            font-size: 0.9375rem;
+            background: #f9fafb;
+            transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+        }
+        .form-field:focus {
+            outline: none;
+            border-color: #C5A059;
+            box-shadow: 0 0 0 3px rgba(197,160,89,0.15);
+            background: white;
+        }
+        select.form-field { -webkit-appearance: none; appearance: none; cursor: pointer; }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 antialiased font-sans">
+<body class="bg-white text-gray-800 antialiased font-sans">
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8H3MKRX"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-    <!-- Header -->
-    <header class="bg-white shadow-sm fixed w-full z-50">
+    <!-- ======= Header ======= -->
+    <header class="bg-white/95 backdrop-blur-sm border-b border-gray-100 fixed w-full z-50">
         <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="text-sm md:text-base font-bold text-primary">
+            <div class="text-sm md:text-base font-bold text-primary tracking-wide">
                 住宅会社の経営層必見
             </div>
-            <a href="#form-section" class="btn-cta-arrow inline-flex items-center bg-secondary text-white px-4 py-2 rounded text-sm md:text-base font-bold hover:bg-yellow-600 transition duration-300">
-                無料レポートをダウンロード <i class="fa-solid fa-arrow-right ml-2 text-sm"></i>
+            <a href="#form-section" class="btn-cta-arrow inline-flex items-center bg-secondary text-white px-5 py-2.5 rounded-lg text-sm font-bold hover:bg-yellow-600 transition duration-300">
+                無料ダウンロード <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
             </a>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero-bg pt-32 pb-20 px-4 text-center text-white">
+    <!-- ======= Hero ======= -->
+    <section class="hero-bg pt-32 pb-24 px-4 text-center text-white">
         <div class="max-w-4xl mx-auto">
-            <p class="text-secondary font-semibold text-base md:text-lg mb-3 tracking-wider hero-text-shadow">コストセンターだったモデルハウスを、利益を生む資産へ。</p>
-            <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-4 hero-text-shadow">
-                "戸建旅館"<br>で<span class="font-black">モデルハウスを収益化</span>
-            </h1>
-            <p class="text-lg md:text-2xl mb-10 text-white hero-text-shadow">
-                <span class="font-bold text-yellow-300 hero-text-shadow">表面利回り40%超</span> を実現する新しい選択。
+            <p class="text-xs font-bold tracking-[0.25em] uppercase text-yellow-300/75 mb-4 hero-text-shadow-sm">
+                コストセンターだったモデルハウスを、利益を生む資産へ。
             </p>
-            
-            <div class="flex flex-col md:flex-row justify-center items-center gap-4 mb-10">
-                <div class="bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/30 hero-text-shadow-sm shadow-lg">
-                    <i class="fa-solid fa-chart-line text-secondary mr-2"></i> 毎月収益を生む
+            <h1 class="font-serif text-4xl md:text-5xl lg:text-[3.75rem] font-black leading-[1.2] mb-5 hero-text-shadow tracking-tight">
+                "戸建旅館"で<br>モデルハウスを<span class="text-yellow-300">収益化</span>
+            </h1>
+            <p class="text-lg md:text-xl mb-10 text-white/90 hero-text-shadow">
+                <span class="font-bold text-yellow-300 text-xl md:text-2xl">表面利回り40%超</span> を実現する新しい選択。
+            </p>
+
+            <div class="flex flex-col md:flex-row justify-center items-center gap-3 mb-10">
+                <div class="bg-white/10 backdrop-blur-md px-5 py-2.5 rounded-full border border-white/20 text-sm hero-text-shadow-sm">
+                    <i class="fa-solid fa-chart-line text-secondary mr-2"></i>毎月収益を生む
                 </div>
-                <div class="bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/30 hero-text-shadow-sm shadow-lg">
-                    <i class="fa-solid fa-user-check text-secondary mr-2"></i> 1名で回る運営
+                <div class="bg-white/10 backdrop-blur-md px-5 py-2.5 rounded-full border border-white/20 text-sm hero-text-shadow-sm">
+                    <i class="fa-solid fa-user-check text-secondary mr-2"></i>1名で回る運営
                 </div>
-                <div class="bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/30 hero-text-shadow-sm shadow-lg">
-                    <i class="fa-solid fa-bed text-secondary mr-2"></i> 宿泊体験で受注増
+                <div class="bg-white/10 backdrop-blur-md px-5 py-2.5 rounded-full border border-white/20 text-sm hero-text-shadow-sm">
+                    <i class="fa-solid fa-bed text-secondary mr-2"></i>宿泊体験で受注増
                 </div>
             </div>
 
-            <p class="text-sm text-white/90 hero-text-shadow-sm mb-2">※入力は1分で完了します</p>
-            <p class="text-sm text-yellow-100 hero-text-shadow-sm mb-4">すぐに実践できるノウハウを公開中</p>
-            <a href="#form-section" class="btn-cta-arrow inline-block bg-accent hover:opacity-90 text-white text-xl font-bold py-4 px-12 rounded-full shadow-lg transform transition duration-300 hover:-translate-y-1">
+            <p class="text-sm text-white/75 hero-text-shadow-sm mb-1">※入力は1分で完了します</p>
+            <p class="text-sm text-yellow-200/90 hero-text-shadow-sm mb-5">すぐに実践できるノウハウを公開中</p>
+            <a href="#form-section" class="btn-cta-arrow inline-block bg-accent hover:opacity-90 text-white text-lg font-bold py-4 px-10 rounded-2xl shadow-xl transition duration-300 hover:-translate-y-1">
                 成功事例解説レポートを無料ダウンロード <i class="fa-solid fa-arrow-right ml-2"></i>
             </a>
-            <p class="mt-4 text-sm text-white hero-text-shadow-sm">※ご登録いただいたメールアドレス宛にPDFをお送りします。</p>
+            <p class="mt-4 text-sm text-white/60 hero-text-shadow-sm">※ご登録いただいたメールアドレス宛にPDFをお送りします。</p>
         </div>
     </section>
 
-    <!-- Problem & Solution Section -->
-    <section class="py-16 px-4 bg-white">
+    <!-- ======= 実績バナー ======= -->
+    <section class="bg-primary py-12 px-4">
+        <div class="max-w-5xl mx-auto">
+            <p class="text-center text-xs font-bold tracking-[0.2em] uppercase text-secondary mb-8 reveal">実際の運営実績（姫路市内 戸建旅館1棟）</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div class="reveal reveal-d1">
+                    <p class="font-serif text-3xl md:text-4xl font-black text-white/60">956万円</p>
+                    <p class="text-xs text-gray-400 mt-2">初年度売上</p>
+                </div>
+                <div class="reveal reveal-d2">
+                    <p class="font-serif text-3xl md:text-4xl font-black text-secondary">1,796万円</p>
+                    <p class="text-xs text-gray-400 mt-2">直近1年売上</p>
+                </div>
+                <div class="reveal reveal-d3">
+                    <p class="font-serif text-3xl md:text-4xl font-black text-white">61.4%</p>
+                    <p class="text-xs text-gray-400 mt-2">直近1年稼働率</p>
+                </div>
+                <div class="reveal" style="transition-delay:0.36s">
+                    <p class="font-serif text-3xl md:text-4xl font-black text-white">4.0万円</p>
+                    <p class="text-xs text-gray-400 mt-2">平均宿泊単価</p>
+                </div>
+            </div>
+            <p class="text-center text-xs text-gray-500 mt-8 reveal">※ 初年度から直近1年の成長推移。稼働率37.5%（初年度）→ 61.4%（直近1年）</p>
+        </div>
+    </section>
+
+    <!-- ======= Problem & Solution ======= -->
+    <section class="py-20 px-4 bg-[#FAFAF8]">
         <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-2xl md:text-3xl font-bold mb-8 text-primary">こんな経営課題を抱えていませんか？</h2>
-            <div class="grid md:grid-cols-3 gap-6 mb-12">
-                <div class="bg-gray-100 p-6 rounded-lg relative shadow-lg transition transform duration-300 hover:-translate-y-2">
-                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gray-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">1</div>
-                    <p class="mt-4 font-bold">モデルハウスの維持費が<br>経営を圧迫している</p>
+            <p class="text-xs font-bold tracking-[0.2em] uppercase text-secondary mb-2 reveal">こんな経営課題を</p>
+            <h2 class="font-serif text-2xl md:text-3xl font-black mb-10 text-primary reveal">抱えていませんか？</h2>
+
+            <div class="grid md:grid-cols-3 gap-6 mb-16">
+                <div class="problem-card reveal reveal-d1">
+                    <div class="problem-bg-num">01</div>
+                    <p class="text-xs font-bold tracking-widest text-secondary mb-3">課題 01</p>
+                    <p class="font-bold text-gray-800 leading-relaxed text-sm md:text-base">モデルハウスの維持費が<br>経営を圧迫している</p>
                 </div>
-                <div class="bg-gray-100 p-6 rounded-lg relative shadow-lg transition transform duration-300 hover:-translate-y-2">
-                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gray-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">2</div>
-                    <p class="mt-4 font-bold">集客コストが高騰し、<br>来場数が減っている</p>
+                <div class="problem-card reveal reveal-d2">
+                    <div class="problem-bg-num">02</div>
+                    <p class="text-xs font-bold tracking-widest text-secondary mb-3">課題 02</p>
+                    <p class="font-bold text-gray-800 leading-relaxed text-sm md:text-base">集客コストが高騰し、<br>来場数が減っている</p>
                 </div>
-                <div class="bg-gray-100 p-6 rounded-lg relative shadow-lg transition transform duration-300 hover:-translate-y-2">
-                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gray-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">3</div>
-                    <p class="mt-4 font-bold">他社との差別化が難しく、<br>価格競争に巻き込まれる</p>
+                <div class="problem-card reveal reveal-d3">
+                    <div class="problem-bg-num">03</div>
+                    <p class="text-xs font-bold tracking-widest text-secondary mb-3">課題 03</p>
+                    <p class="font-bold text-gray-800 leading-relaxed text-sm md:text-base">他社との差別化が難しく、<br>価格競争に巻き込まれる</p>
                 </div>
             </div>
 
-            <div class="relative py-8">
-                <div class="absolute inset-0 flex items-center">
-                    <div class="w-full border-t border-gray-300"></div>
-                </div>
-                <div class="relative flex justify-center">
-                    <span class="bg-white px-4 text-gray-500 text-xl"><i class="fa-solid fa-caret-down"></i></span>
-                </div>
+            <div class="section-line reveal"></div>
+            <div class="mt-5 mb-5 reveal">
+                <span class="inline-flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-secondary">
+                    <span class="w-6 h-px bg-secondary inline-block"></span>
+                    解決策
+                    <span class="w-6 h-px bg-secondary inline-block"></span>
+                </span>
             </div>
 
-            <h3 class="text-xl md:text-2xl font-bold text-primary mt-4 mb-6">
+            <h3 class="font-serif text-xl md:text-2xl font-black text-primary mt-2 mb-6 reveal">
                 中小住宅会社が生き残るための「現実解」。<br>
                 それが <span class="text-accent text-3xl">「戸建旅館事業」</span> です。
             </h3>
-            <p class="text-gray-600 leading-relaxed">
+            <p class="text-gray-600 leading-relaxed text-sm md:text-base max-w-2xl mx-auto reveal">
                 人口減少による市場縮小のなか、「大手企業の安価な大量供給」や「他社もできるコンセプト住宅」では生き残れません。<br>
                 自社のモデルハウスを「宿泊施設」として稼働させ、<strong>"他社がしない・出来ないニッチ市場"</strong>を攻める。<br>
                 <span class="highlight-text font-bold">コストを資産（From Cost to Asset）に変える全く新しいビジネスモデル</span>です。
@@ -167,123 +320,213 @@
         </div>
     </section>
 
-    <!-- 3 Reasons Section -->
-    <section class="py-16 px-4 bg-light border-t border-gray-200">
+    <!-- ======= 3 Reasons ======= -->
+    <section class="py-20 px-4 bg-white border-t border-gray-100">
         <div class="max-w-5xl mx-auto">
-            <h2 class="text-2xl md:text-4xl font-bold text-center mb-12 text-primary">戸建旅館が「稼げる」3つの理由</h2>
+            <div class="text-center mb-14 reveal">
+                <p class="text-xs font-bold tracking-[0.2em] uppercase text-secondary mb-3">Why It Works</p>
+                <h2 class="font-serif text-2xl md:text-4xl font-black text-primary">戸建旅館が「稼げる」3つの理由</h2>
+            </div>
 
             <!-- Reason 1 -->
-            <div class="flex flex-col md:flex-row items-center gap-8 mb-16">
+            <div class="flex flex-col md:flex-row items-center gap-10 mb-20 reveal">
                 <div class="md:w-1/2">
-                    <div class="bg-secondary text-white text-sm font-bold px-3 py-1 inline-block rounded mb-2">理由 01</div>
-                    <h3 class="text-2xl font-bold mb-4 text-primary">高単価でも成立する<br>「表面利回り40%」の収益構造</h3>
-                    <p class="text-gray-600 leading-relaxed mb-4">
+                    <div class="reason-step"><span class="reason-step-bar"></span>理由 01</div>
+                    <h3 class="font-serif text-xl md:text-2xl font-black mb-4 text-primary leading-snug">高単価でも成立する<br>「表面利回り40%」の収益構造</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm">
                         一般の賃貸や安価なホテルとは異なり、家族やグループで貸し切れる「戸建旅館」は高単価な価格設定が可能です。<br>
                         住宅展示場としてかかっていた固定費を宿泊収益で相殺し、さらに大きな利益を生み出す独自の収益シミュレーションを確立しています。
                     </p>
                 </div>
                 <div class="md:w-1/2">
-                    <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800" alt="高級な内装のイメージ" class="reason-img rounded-xl shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800" alt="高級な内装のイメージ" class="reason-img">
                 </div>
             </div>
 
             <!-- Reason 2 -->
-            <div class="flex flex-col md:flex-row-reverse items-center gap-8 mb-16">
+            <div class="flex flex-col md:flex-row-reverse items-center gap-10 mb-20 reveal">
                 <div class="md:w-1/2">
-                    <div class="bg-secondary text-white text-sm font-bold px-3 py-1 inline-block rounded mb-2">理由 02</div>
-                    <h3 class="text-2xl font-bold mb-4 text-primary">属人的な判断を排除した<br>「1名で回る」オペレーション</h3>
-                    <p class="text-gray-600 leading-relaxed mb-4">
+                    <div class="reason-step"><span class="reason-step-bar"></span>理由 02</div>
+                    <h3 class="font-serif text-xl md:text-2xl font-black mb-4 text-primary leading-snug">属人的な判断を排除した<br>「1名で回る」オペレーション</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm">
                         「旅館業は手間がかかる」という常識を覆します。<br>
                         無人チェックインシステムや、清掃外注の仕組み化、当日・翌日のセットアップ手順まで、住宅会社が実務で迷わないための「型（マニュアル）」を構築。専任スタッフ1名でも十分に運用可能です。
                     </p>
                 </div>
                 <div class="md:w-1/2">
-                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800" alt="運営フロー・業務のイメージ" class="reason-img rounded-xl shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800" alt="運営フロー・業務のイメージ" class="reason-img">
                 </div>
             </div>
 
             <!-- Reason 3 -->
-            <div class="flex flex-col md:flex-row items-center gap-8">
+            <div class="flex flex-col md:flex-row items-center gap-10 reveal">
                 <div class="md:w-1/2">
-                    <div class="bg-secondary text-white text-sm font-bold px-3 py-1 inline-block rounded mb-2">理由 03</div>
-                    <h3 class="text-2xl font-bold mb-4 text-primary">宿泊体験が最強のプレゼンに。<br>本業の「受注件数アップ」</h3>
-                    <p class="text-gray-600 leading-relaxed mb-4">
+                    <div class="reason-step"><span class="reason-step-bar"></span>理由 03</div>
+                    <h3 class="font-serif text-xl md:text-2xl font-black mb-4 text-primary leading-snug">宿泊体験が最強のプレゼンに。<br>本業の「受注件数アップ」</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm">
                         数時間の見学では伝わらない「住宅の性能（断熱性・遮音性）」「動線の良さ」「居心地」を、一晩の宿泊体験で顧客に直接体感させることができます。<br>
                         宿泊費を払ってでも体験した顧客は非常に確度が高く、住宅成約率を飛躍的に向上させる強力な集客ツールとなります。
                     </p>
                 </div>
                 <div class="md:w-1/2">
-                    <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=800" alt="宿泊体験・くつろぎの空間のイメージ" class="reason-img rounded-xl shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=800" alt="宿泊体験・くつろぎの空間のイメージ" class="reason-img">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Document Detail Section -->
-    <section class="py-16 px-4 bg-primary text-white text-center">
+    <!-- ======= 講師プロフィール ======= -->
+    <section class="py-20 px-4 bg-[#FAFAF8] border-t border-gray-100">
         <div class="max-w-4xl mx-auto">
-            <h2 class="text-2xl md:text-3xl font-bold mb-6">これらを実務レベルで体系化した<br>「事業マニュアル」を無料公開</h2>
-            <p class="mb-10 text-gray-300">
-                戸建旅館は、立地・価格・集客・運営のどれか一つが欠けても成立しません。<br>
-                本レポートでは、住宅会社がゼロから事業を立ち上げるためのノウハウを完全網羅しています。
-            </p>
-            
-            <div class="bg-white text-left text-gray-800 p-8 rounded-lg shadow-xl max-w-3xl mx-auto">
-                <h3 class="text-xl font-bold mb-4 text-primary border-b pb-2">【レポート収録内容】</h3>
-                <ul class="space-y-4">
-                    <li class="flex items-start">
-                        <i class="fa-solid fa-file-pdf text-red-500 mt-1 mr-3 text-xl"></i>
-                        <div>
-                            <strong class="block text-lg">01 | ビジネスモデル編</strong>
-                            <span class="text-sm text-gray-600">モデルハウスとして成立させる考え方、収益構造と判断の前提整理</span>
+            <div class="text-center mb-12 reveal">
+                <p class="text-xs font-bold tracking-[0.2em] uppercase text-secondary mb-3">Lecturers</p>
+                <h2 class="font-serif text-2xl md:text-3xl font-black text-primary">このレポートを書いた人</h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 reveal reveal-d1">
+                    <div class="flex items-center gap-4 mb-5">
+                        <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-user-tie text-primary text-2xl"></i>
                         </div>
-                    </li>
-                    <li class="flex items-start">
-                        <i class="fa-solid fa-file-pdf text-red-500 mt-1 mr-3 text-xl"></i>
                         <div>
-                            <strong class="block text-lg">02 | 企画・設計・用地仕入編</strong>
-                            <span class="text-sm text-gray-600">集客できる立地条件、法令・用途地域の確認、旅館業を前提とした設計</span>
+                            <p class="text-xs font-bold tracking-widest text-secondary mb-1">アルファーブレイン合同会社</p>
+                            <p class="font-serif font-black text-xl text-primary">有山 恭介</p>
+                            <p class="text-xs text-gray-500">代表社員</p>
                         </div>
-                    </li>
-                    <li class="flex items-start">
-                        <i class="fa-solid fa-file-pdf text-red-500 mt-1 mr-3 text-xl"></i>
+                    </div>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        国内大手コンサルファームに新卒入社し、住宅・不動産業界向けコンサルティングに従事。2021年に独立・会社設立。過去には建売会社の代表取締役として経営にも携わり、住宅・不動産会社の経営支援を行う。
+                    </p>
+                </div>
+                <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 reveal reveal-d2">
+                    <div class="flex items-center gap-4 mb-5">
+                        <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-house text-primary text-2xl"></i>
+                        </div>
                         <div>
-                            <strong class="block text-lg">03 | WEB集客・オペレーション編</strong>
-                            <span class="text-sm text-gray-600">自社HP×OTAの仕組み化、少人数で回る業務フロー、清掃チェックリスト</span>
+                            <p class="text-xs font-bold tracking-widest text-secondary mb-1">株式会社ハウスインフォ</p>
+                            <p class="font-serif font-black text-xl text-primary">福永 義正</p>
+                            <p class="text-xs text-gray-500">代表取締役</p>
                         </div>
-                    </li>
-                </ul>
+                    </div>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        本業の建築業を軸に周辺事業を複数展開。旅館業・宿泊業は未経験から挑戦し、「Besso Himeji」「SUGOMoRIリゾート生野高原」「KONA RESORT AWAJI」を立ち上げ・運営。戸建旅館ビジネスの実践者。
+                    </p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Form Section -->
-    <section id="form-section" class="py-20 px-4 bg-gray-100">
-        <div class="max-w-3xl mx-auto">
-            <div class="bg-white rounded-xl shadow-2xl overflow-hidden">
-                <div class="bg-primary px-6 py-8 text-center text-white">
-                    <h2 class="text-2xl md:text-3xl font-bold mb-2">無料ダウンロードお申し込み</h2>
-                    <p class="text-sm text-gray-300">以下のフォームにご入力ください。送信後、すぐにご登録のメールアドレス宛に資料をお送りいたします。</p>
+    <!-- ======= Document Detail ======= -->
+    <section class="py-20 px-4 bg-primary text-white">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-10 reveal">
+                <p class="text-xs font-bold tracking-[0.2em] uppercase text-secondary mb-3">Free Report</p>
+                <h2 class="font-serif text-2xl md:text-3xl font-black mb-4">無料レポートで<br>「判断できる状態」になる</h2>
+                <p class="text-gray-300 text-sm leading-relaxed max-w-2xl mx-auto">
+                    戸建旅館は、始める前に9割が決まります。<br>
+                    本レポートでは、実際の成功事例をもとに「自社で成立するかどうか」を判断するための視点と根拠を解説します。
+                </p>
+            </div>
+
+            <!-- フックコピー -->
+            <div class="text-center mb-10 reveal">
+                <p class="font-serif text-xl md:text-2xl font-black text-white leading-snug">
+                    「戸建旅館は、<span class="text-secondary">始める前に9割が決まる</span>」
+                </p>
+                <p class="text-sm text-gray-400 mt-3">建ててから修正するのは、時間もお金もかかる。<br>だからこそ、検討段階での「判断基準」が重要です。</p>
+            </div>
+
+            <!-- 無料レポートで分かること -->
+            <div class="bg-white/[0.06] border border-white/10 rounded-2xl px-8 py-2 max-w-3xl mx-auto reveal">
+                <div class="flex items-center justify-between pt-6 pb-4 border-b border-white/10">
+                    <h3 class="font-serif text-base font-bold text-secondary">無料レポートで分かること</h3>
                 </div>
-                
-                <div class="p-8">
+                <div class="doc-item">
+                    <span class="doc-num">01</span>
+                    <div>
+                        <strong class="block text-base text-white mb-1">事業の全体像とビジネスモデルの仕組み</strong>
+                        <span class="text-sm text-gray-400">モデルハウスが収益を生む構造、コストセンターからの転換ロジック</span>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <span class="doc-num">02</span>
+                    <div>
+                        <strong class="block text-base text-white mb-1">実際の収益構造と稼働率の推移</strong>
+                        <span class="text-sm text-gray-400">初年度956万円→直近1,796万円。実績数値と成長の背景</span>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <span class="doc-num">03</span>
+                    <div>
+                        <strong class="block text-base text-white mb-1">立地・集客・オペレーションの要点整理</strong>
+                        <span class="text-sm text-gray-400">失敗しないために押さえる4つのポイントの概要</span>
+                    </div>
+                </div>
+                <div class="doc-item">
+                    <span class="doc-num">04</span>
+                    <div>
+                        <strong class="block text-base text-white mb-1">自社モデルハウスへの転用可否の判断視点</strong>
+                        <span class="text-sm text-gray-400">「自社に当てはまるか」を検討するための前提条件と確認軸</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 有料マニュアルへの導線 -->
+            <div class="mt-8 max-w-3xl mx-auto reveal">
+                <div class="border border-secondary/40 rounded-2xl px-8 py-6 bg-white/[0.04]">
+                    <div class="flex items-start gap-4">
+                        <i class="fa-solid fa-book-open text-secondary text-xl mt-1 shrink-0"></i>
+                        <div>
+                            <p class="text-xs font-bold tracking-widest text-secondary mb-2 uppercase">Next Step</p>
+                            <p class="font-serif font-black text-white text-lg mb-2">実践フェーズへ進む方へ：有料マニュアルのご案内</p>
+                            <p class="text-sm text-gray-400 leading-relaxed">
+                                レポートをお読みいただき、事業化を具体的に検討される方には、
+                                立地選定から運営まで実務手順を体系化した
+                                <strong class="text-white">「戸建旅館事業マニュアル（全5章・80ページ超）」</strong>を別途ご案内しています。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======= Form Section ======= -->
+    <section id="form-section" class="py-24 px-4" style="background: linear-gradient(160deg, #f7f8fb 0%, #eef0f5 100%);">
+        <div class="max-w-2xl mx-auto">
+            <div class="text-center mb-8 reveal">
+                <p class="text-xs font-bold tracking-[0.2em] uppercase text-secondary mb-3">Free Download</p>
+                <h2 class="font-serif text-2xl md:text-3xl font-black text-primary">無料ダウンロードお申し込み</h2>
+                <p class="text-sm text-gray-500 mt-3">以下のフォームにご入力ください。送信後、ご登録のメールアドレス宛に成功事例レポート（PDF）をお送りします。</p>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden reveal">
+                <div class="h-1 w-full" style="background: linear-gradient(90deg, #C5A059 0%, #E8D4A0 50%, #C5A059 100%);"></div>
+                <div class="p-8 md:p-10">
                     <!-- 送信完了・エラー表示用（初期は非表示） -->
                     <div id="form-message" class="hidden mb-6 p-4 rounded-lg"></div>
 
-                    <form id="lp-form" class="space-y-6">
+                    <form id="lp-form" class="space-y-5">
                         <div>
-                            <label for="company" class="block text-sm font-bold text-gray-700 mb-1">会社名 <span class="text-xs bg-red-100 text-red-600 px-2 py-1 rounded ml-2">必須</span></label>
-                            <input type="text" id="company" name="company" placeholder="例：株式会社〇〇" class="w-full border border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent">
+                            <label for="company" class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1.5">
+                                会社名 <span class="text-accent normal-case font-bold ml-1">必須</span>
+                            </label>
+                            <input type="text" id="company" name="company" placeholder="例：株式会社〇〇" class="form-field">
                         </div>
 
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                             <div>
-                                <label for="name" class="block text-sm font-bold text-gray-700 mb-1">ご担当者名 <span class="text-xs bg-red-100 text-red-600 px-2 py-1 rounded ml-2">必須</span></label>
-                                <input type="text" id="name" name="name" placeholder="例：山田 太郎" class="w-full border border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent">
+                                <label for="name" class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1.5">
+                                    ご担当者名 <span class="text-accent normal-case font-bold ml-1">必須</span>
+                                </label>
+                                <input type="text" id="name" name="name" placeholder="例：山田 太郎" class="form-field">
                             </div>
                             <div>
-                                <label for="role" class="block text-sm font-bold text-gray-700 mb-1">役職 <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded ml-2">任意</span></label>
-                                <select id="role" name="role" class="w-full border border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent bg-white">
+                                <label for="role" class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1.5">
+                                    役職 <span class="text-gray-400 normal-case font-normal ml-1">任意</span>
+                                </label>
+                                <select id="role" name="role" class="form-field">
                                     <option value="">選択してください</option>
                                     <option value="代表・役員">代表・役員クラス</option>
                                     <option value="部長・店長">部長・店長クラス</option>
@@ -294,21 +537,25 @@
                         </div>
 
                         <div>
-                            <label for="email" class="block text-sm font-bold text-gray-700 mb-1">メールアドレス <span class="text-xs bg-red-100 text-red-600 px-2 py-1 rounded ml-2">必須</span></label>
-                            <input type="email" id="email" name="email" placeholder="例：info@example.com" class="w-full border border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent">
+                            <label for="email" class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1.5">
+                                メールアドレス <span class="text-accent normal-case font-bold ml-1">必須</span>
+                            </label>
+                            <input type="email" id="email" name="email" placeholder="例：info@example.com" class="form-field">
                         </div>
 
                         <div>
-                            <label for="phone" class="block text-sm font-bold text-gray-700 mb-1">電話番号 <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded ml-2">任意</span></label>
-                            <input type="tel" id="phone" name="phone" placeholder="例：03-1234-5678" class="w-full border border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent">
-                            <p class="text-xs text-gray-500 mt-1">※強引な営業電話等は一切行いません。</p>
+                            <label for="phone" class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1.5">
+                                電話番号 <span class="text-gray-400 normal-case font-normal ml-1">任意</span>
+                            </label>
+                            <input type="tel" id="phone" name="phone" placeholder="例：03-1234-5678" class="form-field">
+                            <p class="text-xs text-gray-400 mt-1.5">※強引な営業電話等は一切行いません。</p>
                         </div>
 
                         <div class="pt-4 text-center">
-                            <p class="text-xs text-gray-500 mb-4">
-                                送信ボタンを押すことで、当社の<a href="#" class="text-accent underline">プライバシーポリシー</a>に同意したものとみなします。
+                            <p class="text-xs text-gray-400 mb-5">
+                                送信ボタンを押すことで、当社の<a href="#" class="text-secondary underline">プライバシーポリシー</a>に同意したものとみなします。
                             </p>
-                            <button type="submit" id="submit-btn" class="btn-cta-arrow w-full md:w-auto inline-flex items-center justify-center gap-2 px-12 py-4 bg-accent hover:opacity-90 text-white font-bold text-lg rounded-full shadow-lg transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed">
+                            <button type="submit" id="submit-btn" class="btn-cta-arrow w-full md:w-auto inline-flex items-center justify-center gap-2 px-12 py-4 bg-accent hover:opacity-90 text-white font-bold text-base rounded-2xl shadow-lg transition duration-300 hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed">
                                 レポートを無料で受け取る <i class="fa-solid fa-arrow-right"></i>
                             </button>
                         </div>
@@ -318,16 +565,32 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-gray-400 py-8 text-center text-sm">
+    <!-- ======= Footer ======= -->
+    <footer class="bg-primary text-gray-400 py-10 text-center text-sm">
         <div class="max-w-6xl mx-auto px-4">
-            <p class="mb-2">主催：アルファーブレイン合同会社</p>
-            <p class="text-gray-500 text-xs mb-1">協力：株式会社ハウスインフォ</p>
-            <p>&copy; 2026 Alpha Brain LLC. All Rights Reserved.</p>
+            <p class="font-bold text-white/80 mb-1">アルファーブレイン合同会社</p>
+            <p class="text-gray-500 text-xs mb-4">協力：株式会社ハウスインフォ</p>
+            <div class="w-12 h-px bg-white/10 mx-auto mb-4"></div>
+            <p class="text-xs text-gray-600">&copy; 2026 Alpha Brain LLC. All Rights Reserved.</p>
         </div>
     </footer>
 
     <script>
+    // ----- Scroll Reveal -----
+    (function() {
+        var els = document.querySelectorAll('.reveal');
+        var obs = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -32px 0px' });
+        els.forEach(function(el) { obs.observe(el); });
+    })();
+
+    // ----- Form -----
     // ★ スプレッドシート連携：Google Apps Script の「ウェブアプリのURL」
     const FORM_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz-thQmNk518mNC5j8tib2wbOwKA-b8fHKIJ6ryADl0lQpHc-OiSR1zjO06Zx_6PqMlTQ/exec';
 
