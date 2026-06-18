@@ -11,416 +11,291 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>お問い合わせ | アルファーブレイン合同会社</title>
-    <meta name="description" content="アルファーブレイン合同会社へのお問い合わせ。不動産・住宅会社の経営支援に関するご相談はこちらから。">
-
+    <meta name="description" content="アルファーブレイン合同会社へのお問い合わせ。経営支援・SFA/CRM構築・集客サポートなど、お気軽にご相談ください。">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;700;900&display=swap" rel="stylesheet">
-
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: { primary: '#1A2B4C' },
-                    fontFamily: {
-                        sans: ['"Noto Sans JP"', '"Helvetica Neue"', 'Arial', 'sans-serif'],
-                        serif: ['"Noto Serif JP"', 'Georgia', 'serif'],
-                    }
-                }
-            }
-        }
-    </script>
-
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;600;700;900&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
-        html { scroll-behavior: smooth; }
-        .reveal {
-            opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 0.72s cubic-bezier(0.16, 1, 0.3, 1),
-                        transform 0.72s cubic-bezier(0.16, 1, 0.3, 1);
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --navy: #1A2B4C; --navy-light: #243660;
+            --gold: #B8973A; --gold-light: #D4AE55;
+            --white: #FFFFFF; --off-white: #F7F6F3;
+            --gray: #6B7280; --gray-light: #E5E4E1;
         }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body { font-family: 'Noto Sans JP', 'Helvetica Neue', Arial, sans-serif; color: #333; background: #fff; overflow-x: hidden; }
+
+        /* NAV */
+        #nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 2.5rem; background: rgba(10,18,35,0.95); backdrop-filter: blur(16px); box-shadow: 0 1px 0 rgba(255,255,255,0.06); }
+        .nav-inner { display: flex; align-items: center; height: 68px; }
+        .nav-logo { flex: 0 0 auto; display: flex; align-items: center; border: 1px solid rgba(255,255,255,0.3); padding: 0.4rem 0.75rem; text-decoration: none; transition: border-color 0.25s; }
+        .nav-logo:hover { border-color: white; }
+        .nav-links { flex: 1; display: flex; align-items: center; justify-content: center; gap: 2.2rem; }
+        .nav-links a { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-decoration: none; color: rgba(255,255,255,0.75); text-transform: uppercase; transition: color 0.2s; }
+        .nav-links a:hover, .nav-links a.active { color: white; }
+        .nav-cta { flex: 0 0 auto; padding: 0.5rem 1.4rem; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; color: white; border: 1px solid rgba(255,255,255,0.6); transition: all 0.25s; }
+        .nav-cta:hover, .nav-cta.active { background: rgba(255,255,255,0.12); border-color: white; }
+        .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; margin-left: auto; }
+        .nav-hamburger span { display: block; width: 22px; height: 1.5px; background: white; }
+        #mobile-menu { display: none; position: fixed; top: 68px; left: 0; right: 0; z-index: 99; background: rgba(10,18,35,0.97); padding: 1rem 0; }
+        #mobile-menu a { display: block; padding: 0.9rem 2.5rem; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; color: rgba(255,255,255,0.7); border-bottom: 1px solid rgba(255,255,255,0.06); transition: color 0.2s; }
+        #mobile-menu a:hover { color: white; }
+        @media (max-width: 820px) { .nav-links, .nav-cta { display: none; } .nav-hamburger { display: flex; } }
+
+        /* PAGE HERO */
+        .page-hero { padding: 8rem 2rem 4rem; background: var(--navy); position: relative; overflow: hidden; }
+        .page-hero::after { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 70% 50%, rgba(184,151,58,0.08) 0%, transparent 60%); }
+        .page-hero-inner { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+        .page-hero-eyebrow { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 1rem; display: block; }
+        .page-hero h1 { font-family: 'Raleway', sans-serif; font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 300; letter-spacing: 0.15em; color: white; line-height: 1.1; margin-bottom: 1rem; }
+        .page-hero p { font-size: 0.9rem; color: rgba(255,255,255,0.5); line-height: 1.9; }
+
+        /* SECTION */
+        .section { padding: 6rem 2rem; }
+        .section-inner { max-width: 860px; margin: 0 auto; }
+
+        /* REVEAL */
+        .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
         .reveal.visible { opacity: 1; transform: none; }
-        .reveal-d1 { transition-delay: 0.08s; }
-        .reveal-d2 { transition-delay: 0.17s; }
-        .nav-enter { animation: nav-enter 0.5s ease-out forwards; }
-        @keyframes nav-enter {
-            from { opacity: 0; transform: translateY(-8px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .hero-dots {
-            background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
-            background-size: 28px 28px;
-        }
-        .form-input {
-            width: 100%;
-            padding: 0.75rem 1rem;
-            border: 1px solid rgba(26,43,76,0.15);
-            border-radius: 10px;
-            font-size: 0.875rem;
-            color: #374151;
-            background: white;
-            transition: border-color 0.2s, box-shadow 0.2s;
-            font-family: inherit;
-        }
-        .form-input:focus {
-            outline: none;
-            border-color: #1A2B4C;
-            box-shadow: 0 0 0 3px rgba(26,43,76,0.08);
-        }
-        .form-input::placeholder { color: #9ca3af; }
-        textarea.form-input { resize: vertical; min-height: 140px; }
-        .form-label { display: block; font-size: 0.8rem; font-weight: 700; color: #374151; margin-bottom: 0.4rem; }
-        .form-label .required { color: #ef4444; margin-left: 0.25rem; font-size: 0.7rem; }
-        .submit-btn {
-            width: 100%;
-            padding: 1rem;
-            background: #1A2B4C;
-            color: white;
-            font-weight: 700;
-            font-size: 0.95rem;
-            border-radius: 12px;
-            border: none;
-            cursor: pointer;
-            transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            font-family: inherit;
-        }
-        .submit-btn:hover { background: #162240; transform: translateY(-1px); box-shadow: 0 8px 20px rgba(26,43,76,0.2); }
-        .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
-        #form-success { display: none; }
-        .nav-active { color: #1A2B4C !important; font-weight: 700; }
+
+        /* CONTACT LAYOUT */
+        .contact-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: start; }
+        @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
+
+        /* INFO SIDEBAR */
+        .contact-info-item { display: flex; gap: 1rem; margin-bottom: 2rem; align-items: flex-start; }
+        .contact-info-icon { width: 40px; height: 40px; border-radius: 50%; background: rgba(26,43,76,0.07); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .contact-info-icon svg { width: 20px; height: 20px; stroke: var(--navy); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+        .contact-info-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; color: var(--gray); margin-bottom: 0.3rem; text-transform: uppercase; }
+        .contact-info-value { font-size: 0.85rem; color: #333; line-height: 1.7; }
+        .contact-info-value a { color: var(--navy); text-decoration: none; }
+
+        /* FORM */
+        .form-group { margin-bottom: 1.6rem; }
+        .form-label { display: block; font-size: 0.78rem; font-weight: 600; color: var(--navy); margin-bottom: 0.5rem; letter-spacing: 0.04em; }
+        .form-label .required { color: #C0392B; font-size: 0.68rem; margin-left: 0.3rem; }
+        .form-input, .form-textarea, .form-select { width: 100%; padding: 0.75rem 1rem; font-family: 'Noto Sans JP', sans-serif; font-size: 0.875rem; color: #333; background: var(--off-white); border: 1px solid transparent; border-radius: 8px; transition: border-color 0.2s, background 0.2s; outline: none; appearance: none; }
+        .form-input:focus, .form-textarea:focus, .form-select:focus { border-color: var(--navy); background: white; }
+        .form-textarea { resize: vertical; min-height: 140px; line-height: 1.7; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        @media (max-width: 500px) { .form-row { grid-template-columns: 1fr; } }
+        .form-submit { width: 100%; padding: 1rem; background: var(--navy); color: white; font-family: 'Noto Sans JP', sans-serif; font-size: 0.9rem; font-weight: 700; letter-spacing: 0.1em; border: none; border-radius: 8px; cursor: pointer; transition: background 0.25s, transform 0.2s; }
+        .form-submit:hover { background: var(--navy-light); transform: translateY(-2px); }
+        .form-note { font-size: 0.75rem; color: var(--gray); line-height: 1.8; margin-top: 1rem; }
+        #form-success { display: none; background: #EAF7F1; border: 1px solid #27AE60; border-radius: 8px; padding: 1.5rem; text-align: center; }
+        #form-success p { font-size: 0.9rem; color: #1E7A62; font-weight: 600; }
+        #form-error { display: none; background: #FDEDED; border: 1px solid #C0392B; border-radius: 8px; padding: 1rem; margin-top: 1rem; }
+        #form-error p { font-size: 0.82rem; color: #C0392B; }
+
+        /* FOOTER */
+        footer { background: #060D1A; padding: 4rem 2rem 2rem; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; max-width: 900px; margin: 0 auto; }
+        .footer-logo-box { display: inline-flex; align-items: center; border: 1px solid rgba(255,255,255,0.2); padding: 0.4rem 0.75rem; margin-bottom: 1rem; }
+        .footer-logo-main { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.2em; color: white; text-transform: uppercase; }
+        .footer-about { font-size: 0.78rem; color: rgba(255,255,255,0.35); line-height: 1.8; margin-bottom: 1rem; }
+        .footer-contact-text { font-size: 0.78rem; color: rgba(255,255,255,0.4); line-height: 1.8; }
+        .footer-heading { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: rgba(255,255,255,0.4); margin-bottom: 1rem; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 0.5rem; }
+        .footer-links a { font-size: 0.8rem; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+        .footer-links a:hover { color: rgba(255,255,255,0.8); }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); margin-top: 3rem; padding-top: 1.5rem; max-width: 900px; margin-left: auto; margin-right: auto; text-align: center; }
+        .footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.2); }
+        @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; gap: 2rem; } }
     </style>
 </head>
-<body class="bg-white text-gray-700 font-sans antialiased">
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8H3MKRX"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8H3MKRX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-    <!-- Navigation -->
-    <nav class="nav-enter fixed w-full z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-18 py-4 items-center">
-                <a href="index.html" class="flex-shrink-0 flex items-center">
-                    <img id="header-logo-img" src="logo_title.png" alt="ALPHA BRAIN" class="h-10 w-auto object-contain" onerror="handleLogoError()"/>
-                    <div id="header-logo-text" class="hidden items-center">
-                        <span class="text-xl font-bold tracking-widest text-primary">ALPHA BRAIN</span>
+<!-- NAV -->
+<nav id="nav">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo">
+            <img src="logo_title.png" alt="Alpha Brain LLC" style="height:28px;width:auto;display:block;filter:brightness(0) invert(1);">
+        </a>
+        <div class="nav-links">
+            <a href="index.html#services">Services</a>
+            <a href="index.html#cases">Cases</a>
+            <a href="about.html">About</a>
+        </div>
+        <a href="contact.html" class="nav-cta active">Contact</a>
+        <div class="nav-hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+    </div>
+</nav>
+<div id="mobile-menu">
+    <a href="index.html#services" onclick="closeMenu()">Services</a>
+    <a href="index.html#cases" onclick="closeMenu()">Cases</a>
+    <a href="about.html" onclick="closeMenu()">About</a>
+    <a href="contact.html">Contact</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+    <div class="page-hero-inner">
+        <span class="page-hero-eyebrow">Contact</span>
+        <h1>GET IN TOUCH</h1>
+        <p>何から手をつければいいかわからない。<br>そんな段階からでも、遠慮なくご連絡ください。</p>
+    </div>
+</section>
+
+<!-- FORM SECTION -->
+<section class="section">
+    <div class="section-inner">
+        <div class="contact-grid">
+            <!-- Info Sidebar -->
+            <div class="reveal">
+                <div class="contact-info-item">
+                    <div class="contact-info-icon">
+                        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                     </div>
-                </a>
-                <div class="hidden md:flex space-x-7 items-center">
-                    <a href="services.html" data-page="services" class="text-sm text-gray-500 hover:text-primary font-medium transition-colors">サービス</a>
-                    <a href="cases.html" data-page="cases" class="text-sm text-gray-500 hover:text-primary font-medium transition-colors">支援事例</a>
-                    <a href="about.html" data-page="about" class="text-sm text-gray-500 hover:text-primary font-medium transition-colors">会社概要</a>
-                    <a href="contact.html" class="px-5 py-2.5 rounded-lg text-white text-sm font-bold transition-all hover:-translate-y-0.5 bg-primary shadow-sm">お問い合わせ</a>
+                    <div>
+                        <p class="contact-info-label">メール</p>
+                        <p class="contact-info-value"><a href="mailto:contact@alpha-brain.jp">contact@alpha-brain.jp</a></p>
+                    </div>
                 </div>
-                <div class="md:hidden">
-                    <button onclick="toggleMobileMenu()" class="text-gray-500 focus:outline-none p-1">
-                        <i data-lucide="menu" id="menu-icon" class="h-6 w-6"></i>
-                        <i data-lucide="x" id="close-icon" class="h-6 w-6 hidden"></i>
-                    </button>
+                <div class="contact-info-item">
+                    <div class="contact-info-icon">
+                        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <div>
+                        <p class="contact-info-label">所在地</p>
+                        <p class="contact-info-value">〒160-0023<br>東京都新宿区西新宿3-3-13<br>西新宿水間ビル6階</p>
+                    </div>
+                </div>
+                <div class="contact-info-item">
+                    <div class="contact-info-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    </div>
+                    <div>
+                        <p class="contact-info-label">対応時間</p>
+                        <p class="contact-info-value">平日 9:00〜18:00<br>（土日祝は翌営業日対応）</p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg">
-            <div class="px-4 py-3 space-y-1">
-                <a href="services.html" class="block w-full text-left px-3 py-3.5 text-sm text-gray-700 hover:bg-gray-50 border-b border-gray-100">サービス</a>
-                <a href="cases.html" class="block w-full text-left px-3 py-3.5 text-sm text-gray-700 hover:bg-gray-50 border-b border-gray-100">支援事例</a>
-                <a href="about.html" class="block w-full text-left px-3 py-3.5 text-sm text-gray-700 hover:bg-gray-50 border-b border-gray-100">会社概要</a>
-                <a href="contact.html" class="block w-full text-left px-3 py-4 text-sm font-bold text-primary">お問い合わせ</a>
-            </div>
-        </div>
-    </nav>
 
-    <!-- Page Hero -->
-    <section class="relative pt-32 pb-16 overflow-hidden bg-primary">
-        <div class="absolute inset-0 hero-dots"></div>
-        <div class="absolute bottom-0 right-0 w-96 h-96 opacity-[0.07]" style="background: radial-gradient(circle, #6699cc 0%, transparent 70%);"></div>
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <p class="text-xs font-bold tracking-[0.25em] uppercase text-blue-300/70 mb-4">Contact</p>
-            <h1 class="font-serif text-3xl lg:text-4xl font-black text-white mb-4">お問い合わせ</h1>
-            <p class="text-blue-100/70 text-sm leading-relaxed max-w-2xl">
-                現状の課題や、目指したい姿についてお気軽にご相談ください。<br>
-                通常1〜2営業日以内にご返信いたします。
-            </p>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="py-20 bg-[#FAFAF8]">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-5 gap-10">
-
-                <!-- Info -->
-                <div class="md:col-span-2 reveal">
-                    <div class="space-y-6">
-                        <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
-                            <h2 class="font-bold text-primary mb-5 text-sm">ご連絡先</h2>
-                            <div class="space-y-4">
-                                <div class="flex gap-3">
-                                    <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style="background:rgba(26,43,76,0.07)">
-                                        <i data-lucide="mail" class="w-4 h-4 text-primary"></i>
-                                    </div>
-                                    <div>
-                                        <p class="text-xs text-gray-400 mb-0.5">メールアドレス</p>
-                                        <a href="mailto:contact@alpha-brain.jp" class="text-sm text-primary font-medium hover:underline">contact@alpha-brain.jp</a>
-                                    </div>
-                                </div>
-                                <div class="flex gap-3">
-                                    <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style="background:rgba(26,43,76,0.07)">
-                                        <i data-lucide="clock" class="w-4 h-4 text-primary"></i>
-                                    </div>
-                                    <div>
-                                        <p class="text-xs text-gray-400 mb-0.5">返信目安</p>
-                                        <p class="text-sm text-gray-600">1〜2営業日以内</p>
-                                    </div>
-                                </div>
-                                <div class="flex gap-3">
-                                    <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style="background:rgba(26,43,76,0.07)">
-                                        <i data-lucide="map-pin" class="w-4 h-4 text-primary"></i>
-                                    </div>
-                                    <div>
-                                        <p class="text-xs text-gray-400 mb-0.5">所在地</p>
-                                        <p class="text-sm text-gray-600">〒160-0023<br>東京都新宿区西新宿3-3-13<br>西新宿水間ビル6階</p>
-                                    </div>
-                                </div>
-                            </div>
+            <!-- Form -->
+            <div class="reveal">
+                <div id="form-success">
+                    <p>お問い合わせを受け付けました。<br>2営業日以内にご連絡いたします。</p>
+                </div>
+                <form id="contact-form" novalidate>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="company">会社名 <span class="required">*</span></label>
+                            <input class="form-input" type="text" id="company" name="company" required placeholder="株式会社〇〇">
                         </div>
-
-                        <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
-                            <h2 class="font-bold text-primary mb-4 text-sm">よくあるご相談</h2>
-                            <ul class="space-y-3 text-xs text-gray-500">
-                                <li class="flex items-start gap-2">
-                                    <i data-lucide="check-circle" class="w-3.5 h-3.5 mt-0.5 text-primary shrink-0"></i>
-                                    KPI設計や管理の仕組みを整えたい
-                                </li>
-                                <li class="flex items-start gap-2">
-                                    <i data-lucide="check-circle" class="w-3.5 h-3.5 mt-0.5 text-primary shrink-0"></i>
-                                    集計・レポート作成の手間を減らしたい
-                                </li>
-                                <li class="flex items-start gap-2">
-                                    <i data-lucide="check-circle" class="w-3.5 h-3.5 mt-0.5 text-primary shrink-0"></i>
-                                    会議を改善して意思決定を速くしたい
-                                </li>
-                                <li class="flex items-start gap-2">
-                                    <i data-lucide="check-circle" class="w-3.5 h-3.5 mt-0.5 text-primary shrink-0"></i>
-                                    営業の属人化を解消したい
-                                </li>
-                                <li class="flex items-start gap-2">
-                                    <i data-lucide="check-circle" class="w-3.5 h-3.5 mt-0.5 text-primary shrink-0"></i>
-                                    競合・商圏調査を依頼したい
-                                </li>
-                            </ul>
+                        <div class="form-group">
+                            <label class="form-label" for="name">お名前 <span class="required">*</span></label>
+                            <input class="form-input" type="text" id="name" name="name" required placeholder="山田 太郎">
                         </div>
                     </div>
-                </div>
-
-                <!-- Form -->
-                <div class="md:col-span-3 reveal reveal-d1">
-                    <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm">
-                        <h2 class="font-bold text-primary mb-6 text-base">お問い合わせフォーム</h2>
-
-                        <!-- Success Message -->
-                        <div id="form-success" class="text-center py-10">
-                            <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style="background:rgba(26,43,76,0.07)">
-                                <i data-lucide="check" class="w-8 h-8 text-primary"></i>
-                            </div>
-                            <h3 class="font-serif font-black text-primary text-xl mb-2">送信完了しました</h3>
-                            <p class="text-sm text-gray-500 leading-relaxed">お問い合わせありがとうございます。<br>1〜2営業日以内にご返信いたします。</p>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="dept">役職・部署</label>
+                            <input class="form-input" type="text" id="dept" name="dept" placeholder="営業部 マネージャー">
                         </div>
-
-                        <form id="contact-form" novalidate>
-                            <div class="space-y-5">
-                                <div class="grid sm:grid-cols-2 gap-4">
-                                    <div>
-                                        <label class="form-label">会社名<span class="required">*</span></label>
-                                        <input type="text" name="company" id="company" class="form-input" placeholder="株式会社〇〇" required>
-                                        <p class="text-red-500 text-xs mt-1 hidden" id="company-err">会社名を入力してください</p>
-                                    </div>
-                                    <div>
-                                        <label class="form-label">お名前<span class="required">*</span></label>
-                                        <input type="text" name="name" id="name" class="form-input" placeholder="山田 太郎" required>
-                                        <p class="text-red-500 text-xs mt-1 hidden" id="name-err">お名前を入力してください</p>
-                                    </div>
-                                </div>
-                                <div>
-                                    <label class="form-label">役職・部署</label>
-                                    <input type="text" name="role" id="role" class="form-input" placeholder="代表取締役 / 営業部長 など">
-                                </div>
-                                <div>
-                                    <label class="form-label">メールアドレス<span class="required">*</span></label>
-                                    <input type="email" name="email" id="email" class="form-input" placeholder="example@company.jp" required>
-                                    <p class="text-red-500 text-xs mt-1 hidden" id="email-err">正しいメールアドレスを入力してください</p>
-                                </div>
-                                <div>
-                                    <label class="form-label">電話番号</label>
-                                    <input type="tel" name="phone" id="phone" class="form-input" placeholder="03-0000-0000">
-                                </div>
-                                <div>
-                                    <label class="form-label">お問い合わせ内容<span class="required">*</span></label>
-                                    <textarea name="message" id="message" class="form-input" placeholder="現状の課題や、ご相談したい内容をお気軽にご記入ください。" required></textarea>
-                                    <p class="text-red-500 text-xs mt-1 hidden" id="message-err">お問い合わせ内容を入力してください</p>
-                                </div>
-
-                                <p id="form-error" class="text-red-500 text-xs text-center hidden">送信に失敗しました。直接メールにてご連絡ください。</p>
-
-                                <button type="submit" class="submit-btn" id="submit-btn">
-                                    <i data-lucide="send" class="w-4 h-4"></i>
-                                    送信する
-                                </button>
-
-                                <p class="text-xs text-gray-400 text-center">
-                                    ご入力いただいた情報は、お問い合わせへの対応にのみ使用します。
-                                </p>
-                            </div>
-                        </form>
+                        <div class="form-group">
+                            <label class="form-label" for="tel">電話番号</label>
+                            <input class="form-input" type="tel" id="tel" name="tel" placeholder="03-0000-0000">
+                        </div>
                     </div>
-                </div>
+                    <div class="form-group">
+                        <label class="form-label" for="email">メールアドレス <span class="required">*</span></label>
+                        <input class="form-input" type="email" id="email" name="email" required placeholder="your@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="category">お問い合わせ種別</label>
+                        <select class="form-select" id="category" name="category">
+                            <option value="">選択してください</option>
+                            <option>SFA / CRM構築・相談</option>
+                            <option>営業支援・仕組みづくり</option>
+                            <option>集客・マーケティング支援</option>
+                            <option>楽珠そろばん教室について</option>
+                            <option>その他</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="message">お問い合わせ内容 <span class="required">*</span></label>
+                        <textarea class="form-textarea" id="message" name="message" required placeholder="ご相談内容をご記入ください。現状の課題感や背景などもお聞かせいただけると、より的確にご回答できます。"></textarea>
+                    </div>
+                    <button type="submit" class="form-submit">送信する</button>
+                    <div id="form-error"><p id="form-error-msg">送信に失敗しました。メールにてご連絡ください。</p></div>
+                    <p class="form-note">ご入力いただいた個人情報は、お問い合わせへの回答目的のみに使用し、第三者に提供することはありません。</p>
+                </form>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-950 text-gray-500 py-12 border-t border-gray-900">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-3 gap-10 mb-10">
-                <div>
-                    <p class="text-white font-bold tracking-widest text-base mb-4">ALPHA BRAIN</p>
-                    <div class="space-y-2 text-xs">
-                        <p class="flex items-start gap-2"><i data-lucide="building-2" class="w-3.5 h-3.5 mt-0.5 shrink-0"></i>アルファーブレイン合同会社</p>
-                        <p class="flex items-start gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 mt-0.5 shrink-0"></i>〒160-0023 東京都新宿区西新宿3-3-13 西新宿水間ビル6階</p>
-                        <p class="flex items-start gap-2"><i data-lucide="mail" class="w-3.5 h-3.5 mt-0.5 shrink-0"></i>contact@alpha-brain.jp</p>
-                    </div>
-                </div>
-                <div>
-                    <p class="text-white text-xs font-bold uppercase tracking-widest mb-4">Navigation</p>
-                    <ul class="space-y-2 text-xs">
-                        <li><a href="index.html" class="hover:text-white transition-colors">トップ</a></li>
-                        <li><a href="services.html" class="hover:text-white transition-colors">サービス内容</a></li>
-                        <li><a href="cases.html" class="hover:text-white transition-colors">支援事例</a></li>
-                        <li><a href="about.html" class="hover:text-white transition-colors">会社概要</a></li>
-                        <li><a href="contact.html" class="hover:text-white transition-colors">お問い合わせ</a></li>
-                    </ul>
-                </div>
-                <div class="text-xs">
-                    <p class="text-white text-xs font-bold uppercase tracking-widest mb-4">Business</p>
-                    <p class="leading-relaxed mb-4">不動産・住宅会社専門の経営コンサルティング<br>（業績向上／業務効率化／市場調査）</p>
-                    <p>設立：2021年8月</p>
-                </div>
-            </div>
-            <div class="border-t border-gray-900 pt-6 text-xs text-center">
-                <p>&copy; Alpha Brain LLC. All Rights Reserved.</p>
+<!-- FOOTER -->
+<footer>
+    <div class="footer-grid">
+        <div>
+            <div class="footer-logo-box"><span class="footer-logo-main">ALPHA BRAIN LLC</span></div>
+            <p class="footer-about">考える力で、組織と子どもの可能性を最大化する。<br>経営支援と教育事業の2軸で、東京から全国へ展開しています。</p>
+            <div class="footer-contact-text">
+                <p>アルファーブレイン合同会社</p>
+                <p>〒160-0023 東京都新宿区西新宿3-3-13 西新宿水間ビル6階</p>
+                <p>contact@alpha-brain.jp ／ 設立：2021年8月</p>
             </div>
         </div>
-    </footer>
+        <div>
+            <p class="footer-heading">Services</p>
+            <ul class="footer-links">
+                <li><a href="index.html#services">SFA / CRM構築</a></li>
+                <li><a href="index.html#services">営業支援</a></li>
+                <li><a href="index.html#services">集客サポート</a></li>
+                <li><a href="index.html#services">楽珠そろばん教室</a></li>
+            </ul>
+        </div>
+        <div>
+            <p class="footer-heading">Navigation</p>
+            <ul class="footer-links">
+                <li><a href="index.html">トップ</a></li>
+                <li><a href="about.html">会社概要</a></li>
+                <li><a href="contact.html">お問い合わせ</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2024 Alpha Brain LLC. All Rights Reserved.</p>
+    </div>
+</footer>
 
-    <script>
-        lucide.createIcons();
-        (function() {
-            var els = document.querySelectorAll('.reveal');
-            var obs = new IntersectionObserver(function(entries) {
-                entries.forEach(function(entry) {
-                    if (entry.isIntersecting) { entry.target.classList.add('visible'); obs.unobserve(entry.target); }
-                });
-            }, { threshold: 0.1, rootMargin: '0px 0px -32px 0px' });
-            els.forEach(function(el) { obs.observe(el); });
-        })();
-        function toggleMobileMenu() {
-            var menu = document.getElementById('mobile-menu');
-            var menuIcon = document.getElementById('menu-icon');
-            var closeIcon = document.getElementById('close-icon');
-            if (menu.classList.contains('hidden')) {
-                menu.classList.remove('hidden'); menuIcon.classList.add('hidden'); closeIcon.classList.remove('hidden');
-            } else {
-                menu.classList.add('hidden'); menuIcon.classList.remove('hidden'); closeIcon.classList.add('hidden');
-            }
-        }
-        function handleLogoError() {
-            var img = document.getElementById('header-logo-img');
-            var text = document.getElementById('header-logo-text');
-            if (img && text) { img.style.display = 'none'; text.classList.remove('hidden'); text.classList.add('flex'); }
-        }
-        (function() {
-            var path = window.location.pathname.split('/').pop() || 'index.html';
-            var page = path.replace('.html', '') || 'index';
-            document.querySelectorAll('[data-page]').forEach(function(el) {
-                if (el.dataset.page === page) el.classList.add('nav-active');
-            });
-        })();
+<script>
+function toggleMenu() { var m = document.getElementById('mobile-menu'); m.style.display = m.style.display === 'block' ? 'none' : 'block'; }
+function closeMenu() { document.getElementById('mobile-menu').style.display = 'none'; }
 
-        // Contact Form
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            var valid = true;
-            var fields = ['company', 'name', 'email', 'message'];
-            fields.forEach(function(id) {
-                var el = document.getElementById(id);
-                var err = document.getElementById(id + '-err');
-                var empty = !el.value.trim();
-                var invalidEmail = id === 'email' && !empty && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim());
-                if (empty || invalidEmail) {
-                    if (err) err.classList.remove('hidden');
-                    el.style.borderColor = '#ef4444';
-                    valid = false;
-                } else {
-                    if (err) err.classList.add('hidden');
-                    el.style.borderColor = '';
-                }
-            });
-            if (!valid) return;
+(function() {
+    var els = document.querySelectorAll('.reveal');
+    var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    els.forEach(function(el) { obs.observe(el); });
+})();
 
-            var btn = document.getElementById('submit-btn');
-            btn.disabled = true;
-            btn.innerHTML = '<svg class="animate-spin w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path></svg> 送信中...';
-
-            var form = document.getElementById('contact-form');
-            var data = new URLSearchParams({
-                company: document.getElementById('company').value.trim(),
-                name: document.getElementById('name').value.trim(),
-                role: document.getElementById('role').value.trim(),
-                email: document.getElementById('email').value.trim(),
-                phone: document.getElementById('phone').value.trim(),
-                message: document.getElementById('message').value.trim()
-            });
-
-            // mailto fallback (Google Apps Script URL を設定している場合はそちらを使用)
-            var scriptUrl = ''; // Google Apps Script URLがあればここに設定
-            if (scriptUrl) {
-                fetch(scriptUrl, { method: 'POST', body: data })
-                    .then(function(res) { return res.json(); })
-                    .then(function() { showSuccess(); })
-                    .catch(function() { showMailto(data); });
-            } else {
-                // mailto fallback
-                showMailto(data);
-            }
-        });
-
-        function showSuccess() {
-            document.getElementById('contact-form').style.display = 'none';
-            document.getElementById('form-success').style.display = 'block';
-            lucide.createIcons();
-        }
-
-        function showMailto(data) {
-            var subject = encodeURIComponent('【お問い合わせ】' + (document.getElementById('company').value.trim() || '') + ' ' + (document.getElementById('name').value.trim() || ''));
-            var body = encodeURIComponent(
-                '会社名: ' + document.getElementById('company').value.trim() + '\n' +
-                'お名前: ' + document.getElementById('name').value.trim() + '\n' +
-                '役職: ' + document.getElementById('role').value.trim() + '\n' +
-                'メール: ' + document.getElementById('email').value.trim() + '\n' +
-                '電話: ' + document.getElementById('phone').value.trim() + '\n\n' +
-                'お問い合わせ内容:\n' + document.getElementById('message').value.trim()
-            );
-            window.location.href = 'mailto:contact@alpha-brain.jp?subject=' + subject + '&body=' + body;
-            var btn = document.getElementById('submit-btn');
-            btn.disabled = false;
-            btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg> 送信する';
-        }
-    </script>
+document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var form = this;
+    var company = form.company.value.trim();
+    var name    = form.name.value.trim();
+    var email   = form.email.value.trim();
+    var message = form.message.value.trim();
+    if (!company || !name || !email || !message) {
+        document.getElementById('form-error-msg').textContent = '必須項目をすべてご入力ください。';
+        document.getElementById('form-error').style.display = 'block';
+        return;
+    }
+    var dept     = form.dept.value.trim();
+    var tel      = form.tel.value.trim();
+    var category = form.category.value;
+    var body = '会社名: ' + company + '\nお名前: ' + name + (dept ? '\n役職・部署: ' + dept : '') + (tel ? '\n電話番号: ' + tel : '') + '\nメール: ' + email + (category ? '\n種別: ' + category : '') + '\n\n' + message;
+    window.location.href = 'mailto:contact@alpha-brain.jp?subject=' + encodeURIComponent('【HP問い合わせ】' + company + ' ' + name) + '&body=' + encodeURIComponent(body);
+    document.getElementById('contact-form').style.display = 'none';
+    document.getElementById('form-success').style.display = 'block';
+    document.getElementById('form-error').style.display = 'none';
+});
+</script>
 </body>
 </html>
