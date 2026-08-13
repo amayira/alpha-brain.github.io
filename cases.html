@@ -11,383 +11,242 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>支援事例 | アルファーブレイン合同会社</title>
-    <meta name="description" content="アルファーブレイン合同会社の支援事例。賃貸管理・投資用不動産・戸建分譲など、不動産・住宅会社への経営支援の実績をご紹介します。">
-
+    <meta name="description" content="アルファーブレイン合同会社の支援事例。不動産・住宅会社へのKPI設計・業務効率化・会議設計・市場調査の実績を、課題／施策／成果の形でご紹介します。">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;700;900&display=swap" rel="stylesheet">
-
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: { primary: '#1A2B4C' },
-                    fontFamily: {
-                        sans: ['"Noto Sans JP"', '"Helvetica Neue"', 'Arial', 'sans-serif'],
-                        serif: ['"Noto Serif JP"', 'Georgia', 'serif'],
-                    }
-                }
-            }
-        }
-    </script>
-
-    <style>
-        html { scroll-behavior: smooth; }
-        .reveal {
-            opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 0.72s cubic-bezier(0.16, 1, 0.3, 1),
-                        transform 0.72s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .reveal.visible { opacity: 1; transform: none; }
-        .reveal-d1 { transition-delay: 0.08s; }
-        .reveal-d2 { transition-delay: 0.17s; }
-        .reveal-d3 { transition-delay: 0.26s; }
-        .nav-enter { animation: nav-enter 0.5s ease-out forwards; }
-        @keyframes nav-enter {
-            from { opacity: 0; transform: translateY(-8px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .hero-dots {
-            background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
-            background-size: 28px 28px;
-        }
-        .case-card {
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 2px 16px rgba(0,0,0,0.05);
-            border-left: 5px solid #1A2B4C;
-            overflow: hidden;
-            transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s ease;
-        }
-        .case-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(26,43,76,0.1); }
-        .tag { display: inline-flex; align-items: center; font-size: 0.7rem; font-weight: 700; color: #1A2B4C; border: 1px solid rgba(26,43,76,0.2); background: rgba(26,43,76,0.05); padding: 0.2rem 0.75rem; border-radius: 9999px; }
-        .nav-active { color: #1A2B4C !important; font-weight: 700; }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@300;500;700;900&family=Oswald:wght@400;500&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/site.css">
 </head>
-<body class="bg-white text-gray-700 font-sans antialiased">
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8H3MKRX"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8H3MKRX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-    <!-- Navigation -->
-    <nav class="nav-enter fixed w-full z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-18 py-4 items-center">
-                <a href="index.html" class="flex-shrink-0 flex items-center">
-                    <img id="header-logo-img" src="logo_title.png" alt="ALPHA BRAIN" class="h-10 w-auto object-contain" onerror="handleLogoError()"/>
-                    <div id="header-logo-text" class="hidden items-center">
-                        <span class="text-xl font-bold tracking-widest text-primary">ALPHA BRAIN</span>
-                    </div>
-                </a>
-                <div class="hidden md:flex space-x-7 items-center">
-                    <a href="services.html" data-page="services" class="text-sm text-gray-500 hover:text-primary font-medium transition-colors">サービス</a>
-                    <a href="cases.html" data-page="cases" class="text-sm text-gray-500 hover:text-primary font-medium transition-colors">支援事例</a>
-                    <a href="about.html" data-page="about" class="text-sm text-gray-500 hover:text-primary font-medium transition-colors">会社概要</a>
-                    <a href="contact.html" class="px-5 py-2.5 rounded-lg text-white text-sm font-bold transition-all hover:-translate-y-0.5 bg-primary shadow-sm">お問い合わせ</a>
-                </div>
-                <div class="md:hidden">
-                    <button onclick="toggleMobileMenu()" class="text-gray-500 focus:outline-none p-1">
-                        <i data-lucide="menu" id="menu-icon" class="h-6 w-6"></i>
-                        <i data-lucide="x" id="close-icon" class="h-6 w-6 hidden"></i>
-                    </button>
-                </div>
+<!-- ======= NAV ======= -->
+<nav id="nav">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo">
+            <img src="logo_title.png" alt="Alpha Brain LLC" style="height:28px;width:auto;filter:brightness(0) invert(1);">
+        </a>
+        <div class="nav-links">
+            <a href="services.html" data-page="services.html">Services</a>
+            <a href="cases.html" data-page="cases.html">Cases</a>
+            <a href="about.html" data-page="about.html">About</a>
+        </div>
+        <a href="contact.html" class="nav-cta" data-page="contact.html">Contact</a>
+        <div class="nav-hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+    </div>
+</nav>
+<div id="mobile-menu">
+    <a href="services.html">Services</a>
+    <a href="cases.html">Cases</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+</div>
+
+<!-- ======= PAGE HEAD ======= -->
+<header class="page-head">
+    <div class="wide-head">
+        <div class="wide-head__ph">
+            <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1800&q=75" alt="" width="1800" height="675">
+        </div>
+        <div class="wide-head__ov">
+            <div class="wide-head__inner">
+                <p class="wide-head__eyebrow">Our work</p>
+                <h1 class="wide-head__name">Cases</h1>
+                <p class="lead lead--on-photo">不動産・住宅会社へのKPI設計・業務効率化・組織改善の実績の一部をご紹介します。掲載にあたり、クライアント情報は一部変更・抽象化しています。</p>
             </div>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg">
-            <div class="px-4 py-3 space-y-1">
-                <a href="services.html" class="block w-full text-left px-3 py-3.5 text-sm text-gray-700 hover:bg-gray-50 border-b border-gray-100">サービス</a>
-                <a href="cases.html" class="block w-full text-left px-3 py-3.5 text-sm text-gray-700 hover:bg-gray-50 border-b border-gray-100">支援事例</a>
-                <a href="about.html" class="block w-full text-left px-3 py-3.5 text-sm text-gray-700 hover:bg-gray-50 border-b border-gray-100">会社概要</a>
-                <a href="contact.html" class="block w-full text-left px-3 py-4 text-sm font-bold text-primary">お問い合わせ</a>
+    </div>
+</header>
+
+<!-- ======= CASES ======= -->
+<section class="sec">
+    <div class="ab-wrap">
+
+        <!-- Case 01 -->
+        <article class="case-detail reveal">
+            <div class="case-detail__head">
+                <span class="case-detail__no caps">01</span>
+                <h2 class="case-detail__title">賃貸管理会社<small>管理戸数 1,200戸</small></h2>
+                <span class="case-detail__tag">業務効率化</span>
             </div>
-        </div>
-    </nav>
-
-    <!-- Page Hero -->
-    <section class="relative pt-32 pb-16 overflow-hidden bg-primary">
-        <div class="absolute inset-0 hero-dots"></div>
-        <div class="absolute bottom-0 right-0 w-96 h-96 opacity-[0.07]" style="background: radial-gradient(circle, #6699cc 0%, transparent 70%);"></div>
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <p class="text-xs font-bold tracking-[0.25em] uppercase text-blue-300/70 mb-4">Case Studies</p>
-            <h1 class="font-serif text-3xl lg:text-4xl font-black text-white mb-4">支援事例</h1>
-            <p class="text-blue-100/70 text-sm leading-relaxed max-w-2xl">
-                不動産・住宅会社へのKPI設計・業務効率化・組織改善の実績の一部をご紹介します。
-                ※ 掲載にあたり、クライアント情報は一部変更・抽象化しています。
-            </p>
-        </div>
-    </section>
-
-    <!-- Cases -->
-    <section class="py-20 bg-[#FAFAF8]">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="space-y-8">
-
-                <!-- Case 01 -->
-                <div class="case-card p-7 reveal">
-                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-5">
-                        <div>
-                            <span class="text-xs font-bold tracking-widest text-primary/50 uppercase">Case 01</span>
-                            <h2 class="font-serif text-lg font-black text-primary mt-1">賃貸管理会社
-                                <span class="text-sm font-sans font-normal text-gray-400 ml-2">管理戸数：1,200戸</span>
-                            </h2>
-                        </div>
-                        <span class="mt-2 md:mt-0 tag w-fit">業務効率化</span>
-                    </div>
-                    <div class="grid md:grid-cols-3 gap-6 mb-6">
-                        <div>
-                            <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">課題</p>
-                            <p class="text-sm text-gray-600 leading-relaxed">更新・解約や対応状況の可視化ができず、どの物件のどのテナントにアクションすべきかが把握できていなかった。データはあるが集計に時間がかかり、打ち手が曖昧な状態。</p>
-                        </div>
-                        <div>
-                            <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">施策</p>
-                            <p class="text-sm text-gray-600 leading-relaxed">KPI定義の統一（入居率・退去率・更新率の計算基準を揃える）／スプレッドシートダッシュボードの構築／週次定例会のアジェンダ型化と議事録フォーマット整備。</p>
-                        </div>
-                        <div>
-                            <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">成果</p>
-                            <div class="bg-primary/5 rounded-xl p-4 space-y-2">
-                                <p class="text-sm font-bold text-primary">入居率 89.6% → <span class="text-2xl font-serif">95.4%</span></p>
-                                <p class="text-xs text-gray-500">定例準備時間 8h → 2h／週</p>
-                                <p class="text-xs text-gray-500">早期対応件数が月平均+23件増加</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-gray-50 rounded-xl p-4 text-xs text-gray-500 leading-relaxed">
-                        <span class="font-bold text-primary">ポイント：</span>既存のスプレッドシートをベースに、入力コストを増やさず可視化を実現。ツール導入ではなく「使える状態」までの定着を支援したことで、担当者が主体的に更新できるようになりました。
-                    </div>
+            <div class="case-cols">
+                <div class="case-col">
+                    <p class="case-col__label">課題</p>
+                    <p>更新・解約や対応状況の可視化ができず、どの物件のどのテナントにアクションすべきかが把握できていなかった。データはあるが集計に時間がかかり、打ち手が曖昧な状態。</p>
                 </div>
-
-                <!-- Case 02 -->
-                <div class="case-card p-7 reveal">
-                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-5">
-                        <div>
-                            <span class="text-xs font-bold tracking-widest text-primary/50 uppercase">Case 02</span>
-                            <h2 class="font-serif text-lg font-black text-primary mt-1">投資用不動産 販売・仲介
-                                <span class="text-sm font-sans font-normal text-gray-400 ml-2">メンバー数：12名</span>
-                            </h2>
-                        </div>
-                        <span class="mt-2 md:mt-0 tag w-fit">業績向上</span>
-                    </div>
-                    <div class="grid md:grid-cols-3 gap-6 mb-6">
-                        <div>
-                            <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">課題</p>
-                            <p class="text-sm text-gray-600 leading-relaxed">反響〜成約の歩留まりが把握できず、改善が属人的。トップ営業マンに依存しており、チーム全体の底上げができていなかった。集計も手動で月次しか見られない状態。</p>
-                        </div>
-                        <div>
-                            <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">施策</p>
-                            <p class="text-sm text-gray-600 leading-relaxed">営業KPIの分解（反響→アポ→面談→成約の各転換率）／CRM入力ルールの整備と運用推進／週次での歩留まりレポートの自動化／月次の個人・チーム振り返り会の設計。</p>
-                        </div>
-                        <div>
-                            <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">成果</p>
-                            <div class="bg-primary/5 rounded-xl p-4 space-y-2">
-                                <p class="text-sm font-bold text-primary">反響→面談歩留まり <span class="text-2xl font-serif">+18%</span></p>
-                                <p class="text-xs text-gray-500">レポート作成時間 6h → 1.5h</p>
-                                <p class="text-xs text-gray-500">中堅メンバーの成約件数 平均+1.3件/月</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-gray-50 rounded-xl p-4 text-xs text-gray-500 leading-relaxed">
-                        <span class="font-bold text-primary">ポイント：</span>「どこで落ちているか」を数字で示したことで、マネージャーが感覚ではなく根拠をもってメンバーに指導できるように。属人的なフィードバックから、再現性のある育成サイクルへ移行しました。
-                    </div>
+                <div class="case-col">
+                    <p class="case-col__label">施策</p>
+                    <p>KPI定義の統一（入居率・退去率・更新率の計算基準を揃える）／スプレッドシートダッシュボードの構築／週次定例会のアジェンダ型化と議事録フォーマット整備。</p>
                 </div>
-
-                <!-- Case 03 -->
-                <div class="case-card p-7 reveal">
-                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-5">
-                        <div>
-                            <span class="text-xs font-bold tracking-widest text-primary/50 uppercase">Case 03</span>
-                            <h2 class="font-serif text-lg font-black text-primary mt-1">戸建分譲会社
-                                <span class="text-sm font-sans font-normal text-gray-400 ml-2">年商：20億円</span>
-                            </h2>
-                        </div>
-                        <span class="mt-2 md:mt-0 tag w-fit">会議設計</span>
-                    </div>
-                    <div class="grid md:grid-cols-3 gap-6 mb-6">
-                        <div>
-                            <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">課題</p>
-                            <p class="text-sm text-gray-600 leading-relaxed">案件管理と集計が煩雑で、週次会議が90分の報告会に。役員・マネージャー・担当者の間で同じ案件の認識がずれており、判断が遅かった。</p>
-                        </div>
-                        <div>
-                            <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">施策</p>
-                            <p class="text-sm text-gray-600 leading-relaxed">会議体の再設計（経営会議・部門会議・案件確認の3層に分離）／KPIモニタリングの自動化／意思決定フォーマットの導入（WHY・WHAT・HOW・BY WHEN）。</p>
-                        </div>
-                        <div>
-                            <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">成果</p>
-                            <div class="bg-primary/5 rounded-xl p-4 space-y-2">
-                                <p class="text-sm font-bold text-primary">会議時間 90分 → <span class="text-2xl font-serif">60分</span></p>
-                                <p class="text-xs text-gray-500">翌日決裁率 35% → 62%</p>
-                                <p class="text-xs text-gray-500">会議参加者の残業時間 月平均-12h</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-gray-50 rounded-xl p-4 text-xs text-gray-500 leading-relaxed">
-                        <span class="font-bold text-primary">ポイント：</span>「決める会議」と「共有する場」を分けたことで、本当に議論が必要な案件だけに集中できるように。担当者が事前に論点を整理する習慣も生まれ、準備の質が上がりました。
-                    </div>
-                </div>
-
-                <!-- Case 04 -->
-                <div class="case-card p-7 reveal">
-                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-5">
-                        <div>
-                            <span class="text-xs font-bold tracking-widest text-primary/50 uppercase">Case 04</span>
-                            <h2 class="font-serif text-lg font-black text-primary mt-1">新築分譲マンション 販売会社
-                                <span class="text-sm font-sans font-normal text-gray-400 ml-2">販売戸数：年間80戸</span>
-                            </h2>
-                        </div>
-                        <span class="mt-2 md:mt-0 tag w-fit">市場調査・マーケ</span>
-                    </div>
-                    <div class="grid md:grid-cols-3 gap-6 mb-6">
-                        <div>
-                            <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">課題</p>
-                            <p class="text-sm text-gray-600 leading-relaxed">広告費をかけているが反響が減少。どのチャネルが効いているか不明で、予算配分の根拠がなかった。競合との差別化ポイントも言語化できていなかった。</p>
-                        </div>
-                        <div>
-                            <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">施策</p>
-                            <p class="text-sm text-gray-600 leading-relaxed">チャネル別の反響・コスト・成約率の整理／競合物件の価格・仕様調査／顧客インタビューによる購買理由の整理／媒体ごとの予算再配分提案。</p>
-                        </div>
-                        <div>
-                            <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">成果</p>
-                            <div class="bg-primary/5 rounded-xl p-4 space-y-2">
-                                <p class="text-sm font-bold text-primary">広告CPAを <span class="text-2xl font-serif">-32%</span> 削減</p>
-                                <p class="text-xs text-gray-500">反響数は維持しつつ広告費を圧縮</p>
-                                <p class="text-xs text-gray-500">営業トークの言語化・トレーニング導入</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-gray-50 rounded-xl p-4 text-xs text-gray-500 leading-relaxed">
-                        <span class="font-bold text-primary">ポイント：</span>「なんとなく続けていた広告」を数字で整理し直したことで、効果の低いチャネルへの投資を止め、強いチャネルに集中できるように。調査結果は社内プレゼン資料としてもそのまま活用されました。
-                    </div>
-                </div>
-
-                <!-- Case 05 -->
-                <div class="case-card p-7 reveal">
-                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-5">
-                        <div>
-                            <span class="text-xs font-bold tracking-widest text-primary/50 uppercase">Case 05</span>
-                            <h2 class="font-serif text-lg font-black text-primary mt-1">不動産仲介・リフォーム 複合会社
-                                <span class="text-sm font-sans font-normal text-gray-400 ml-2">従業員数：35名</span>
-                            </h2>
-                        </div>
-                        <span class="mt-2 md:mt-0 tag w-fit">組織・仕組み化</span>
-                    </div>
-                    <div class="grid md:grid-cols-3 gap-6 mb-6">
-                        <div>
-                            <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">課題</p>
-                            <p class="text-sm text-gray-600 leading-relaxed">仲介・リフォームの2事業が別々に動いており、クロスセルの機会を逃していた。各部門のKPIがバラバラで、経営者が全体像を把握するのに毎月丸一日かかっていた。</p>
-                        </div>
-                        <div>
-                            <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">施策</p>
-                            <p class="text-sm text-gray-600 leading-relaxed">全社共通KPI体系の設計／部門横断ダッシュボードの構築／クロスセル連携フローの明文化／月次経営レポートの自動化（経営者が15分で全体を把握できる形式）。</p>
-                        </div>
-                        <div>
-                            <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">成果</p>
-                            <div class="bg-primary/5 rounded-xl p-4 space-y-2">
-                                <p class="text-sm font-bold text-primary">リフォーム紹介件数 <span class="text-2xl font-serif">月+14件</span></p>
-                                <p class="text-xs text-gray-500">経営レポート作成 丸一日 → 15分</p>
-                                <p class="text-xs text-gray-500">全社売上 前年比+11%</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-gray-50 rounded-xl p-4 text-xs text-gray-500 leading-relaxed">
-                        <span class="font-bold text-primary">ポイント：</span>部門間の連携を「仕組み」として設計したことで、担当者の意識ではなくフローとして自然にクロスセルが起きるように。経営者の「情報収集」コストが大幅に下がり、意思決定の質が向上しました。
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="py-24 bg-primary relative overflow-hidden">
-        <div class="absolute inset-0 hero-dots"></div>
-        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            <p class="text-xs font-bold tracking-[0.25em] uppercase text-blue-300/70 mb-4 reveal">Contact</p>
-            <h2 class="font-serif text-3xl md:text-4xl font-black text-white mb-4 reveal">御社の課題も一緒に整理します</h2>
-            <p class="text-blue-100/70 text-sm mb-10 leading-relaxed reveal">
-                上記の事例に似た課題をお持ちの方はもちろん、「うちはちょっと違うかも」という方も、まずはお気軽にご相談ください。
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center reveal">
-                <a href="contact.html" class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-white text-primary font-bold text-base hover:bg-blue-50 transition-colors shadow-lg">
-                    <i data-lucide="mail" class="w-5 h-5"></i>
-                    お問い合わせページへ
-                </a>
-                <a href="mailto:contact@alpha-brain.jp" class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl border border-white/30 text-white font-bold text-base hover:bg-white/10 transition-colors">
-                    contact@alpha-brain.jp
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-950 text-gray-500 py-12 border-t border-gray-900">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-3 gap-10 mb-10">
-                <div>
-                    <p class="text-white font-bold tracking-widest text-base mb-4">ALPHA BRAIN</p>
-                    <div class="space-y-2 text-xs">
-                        <p class="flex items-start gap-2"><i data-lucide="building-2" class="w-3.5 h-3.5 mt-0.5 shrink-0"></i>アルファーブレイン合同会社</p>
-                        <p class="flex items-start gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 mt-0.5 shrink-0"></i>〒160-0023 東京都新宿区西新宿3-3-13 西新宿水間ビル6階</p>
-                        <p class="flex items-start gap-2"><i data-lucide="mail" class="w-3.5 h-3.5 mt-0.5 shrink-0"></i>contact@alpha-brain.jp</p>
-                    </div>
-                </div>
-                <div>
-                    <p class="text-white text-xs font-bold uppercase tracking-widest mb-4">Navigation</p>
-                    <ul class="space-y-2 text-xs">
-                        <li><a href="index.html" class="hover:text-white transition-colors">トップ</a></li>
-                        <li><a href="services.html" class="hover:text-white transition-colors">サービス内容</a></li>
-                        <li><a href="cases.html" class="hover:text-white transition-colors">支援事例</a></li>
-                        <li><a href="about.html" class="hover:text-white transition-colors">会社概要</a></li>
-                        <li><a href="contact.html" class="hover:text-white transition-colors">お問い合わせ</a></li>
-                    </ul>
-                </div>
-                <div class="text-xs">
-                    <p class="text-white text-xs font-bold uppercase tracking-widest mb-4">Business</p>
-                    <p class="leading-relaxed mb-4">不動産・住宅会社専門の経営コンサルティング<br>（業績向上／業務効率化／市場調査）</p>
-                    <p>設立：2021年8月</p>
+                <div class="case-col case-col--result">
+                    <p class="case-col__label">成果</p>
+                    <p class="case-result__head">入居率 89.6% → <strong>95.4%</strong></p>
+                    <p class="case-result__sub">定例準備時間 8h → 2h／週<br>早期対応件数が月平均 +23件</p>
                 </div>
             </div>
-            <div class="border-t border-gray-900 pt-6 text-xs text-center">
-                <p>&copy; Alpha Brain LLC. All Rights Reserved.</p>
+            <p class="case-point"><b>ポイント：</b>既存のスプレッドシートをベースに、入力コストを増やさず可視化を実現。ツール導入ではなく「使える状態」までの定着を支援したことで、担当者が主体的に更新できるようになりました。</p>
+        </article>
+
+        <!-- Case 02 -->
+        <article class="case-detail reveal">
+            <div class="case-detail__head">
+                <span class="case-detail__no caps">02</span>
+                <h2 class="case-detail__title">投資用不動産 販売・仲介<small>メンバー数 12名</small></h2>
+                <span class="case-detail__tag">営業支援</span>
+            </div>
+            <div class="case-cols">
+                <div class="case-col">
+                    <p class="case-col__label">課題</p>
+                    <p>反響〜成約の歩留まりが把握できず、改善が属人的。トップ営業マンに依存しており、チーム全体の底上げができていなかった。集計も手動で月次しか見られない状態。</p>
+                </div>
+                <div class="case-col">
+                    <p class="case-col__label">施策</p>
+                    <p>営業KPIの分解（反響→アポ→面談→成約の各転換率）／CRM入力ルールの整備と運用推進／週次での歩留まりレポートの自動化／月次の個人・チーム振り返り会の設計。</p>
+                </div>
+                <div class="case-col case-col--result">
+                    <p class="case-col__label">成果</p>
+                    <p class="case-result__head">反響→面談歩留まり <strong>+18%</strong></p>
+                    <p class="case-result__sub">レポート作成時間 6h → 1.5h<br>中堅メンバーの成約 平均 +1.3件／月</p>
+                </div>
+            </div>
+            <p class="case-point"><b>ポイント：</b>「どこで落ちているか」を数字で示したことで、マネージャーが感覚ではなく根拠をもってメンバーに指導できるように。属人的なフィードバックから、再現性のある育成サイクルへ移行しました。</p>
+        </article>
+
+        <!-- Case 03 -->
+        <article class="case-detail reveal">
+            <div class="case-detail__head">
+                <span class="case-detail__no caps">03</span>
+                <h2 class="case-detail__title">戸建分譲会社<small>年商 20億円</small></h2>
+                <span class="case-detail__tag">会議設計</span>
+            </div>
+            <div class="case-cols">
+                <div class="case-col">
+                    <p class="case-col__label">課題</p>
+                    <p>案件管理と集計が煩雑で、週次会議が90分の報告会に。役員・マネージャー・担当者の間で同じ案件の認識がずれており、判断が遅かった。</p>
+                </div>
+                <div class="case-col">
+                    <p class="case-col__label">施策</p>
+                    <p>会議体の再設計（経営会議・部門会議・案件確認の3層に分離）／KPIモニタリングの自動化／意思決定フォーマットの導入（WHY・WHAT・HOW・BY WHEN）。</p>
+                </div>
+                <div class="case-col case-col--result">
+                    <p class="case-col__label">成果</p>
+                    <p class="case-result__head">会議時間 90分 → <strong>60分</strong></p>
+                    <p class="case-result__sub">翌日決裁率 35% → 62%<br>会議参加者の残業 月平均 −12h</p>
+                </div>
+            </div>
+            <p class="case-point"><b>ポイント：</b>「決める会議」と「共有する場」を分けたことで、本当に議論が必要な案件だけに集中できるように。担当者が事前に論点を整理する習慣も生まれ、準備の質が上がりました。</p>
+        </article>
+
+        <!-- Case 04 -->
+        <article class="case-detail reveal">
+            <div class="case-detail__head">
+                <span class="case-detail__no caps">04</span>
+                <h2 class="case-detail__title">新築分譲マンション 販売会社<small>販売戸数 年間80戸</small></h2>
+                <span class="case-detail__tag">集客サポート</span>
+            </div>
+            <div class="case-cols">
+                <div class="case-col">
+                    <p class="case-col__label">課題</p>
+                    <p>広告費をかけているが反響が減少。どのチャネルが効いているか不明で、予算配分の根拠がなかった。競合との差別化ポイントも言語化できていなかった。</p>
+                </div>
+                <div class="case-col">
+                    <p class="case-col__label">施策</p>
+                    <p>チャネル別の反響・コスト・成約率の整理／競合物件の価格・仕様調査／顧客インタビューによる購買理由の整理／媒体ごとの予算再配分提案。</p>
+                </div>
+                <div class="case-col case-col--result">
+                    <p class="case-col__label">成果</p>
+                    <p class="case-result__head">広告CPA <strong>−32%</strong></p>
+                    <p class="case-result__sub">反響数は維持しつつ広告費を圧縮<br>営業トークの言語化・トレーニング導入</p>
+                </div>
+            </div>
+            <p class="case-point"><b>ポイント：</b>「なんとなく続けていた広告」を数字で整理し直したことで、効果の低いチャネルへの投資を止め、強いチャネルに集中できるように。調査結果は社内プレゼン資料としてもそのまま活用されました。</p>
+        </article>
+
+        <!-- Case 05 -->
+        <article class="case-detail reveal">
+            <div class="case-detail__head">
+                <span class="case-detail__no caps">05</span>
+                <h2 class="case-detail__title">不動産仲介・リフォーム 複合会社<small>従業員数 35名</small></h2>
+                <span class="case-detail__tag">組織・仕組み化</span>
+            </div>
+            <div class="case-cols">
+                <div class="case-col">
+                    <p class="case-col__label">課題</p>
+                    <p>仲介・リフォームの2事業が別々に動いており、クロスセルの機会を逃していた。各部門のKPIがバラバラで、経営者が全体像を把握するのに毎月丸一日かかっていた。</p>
+                </div>
+                <div class="case-col">
+                    <p class="case-col__label">施策</p>
+                    <p>全社共通KPI体系の設計／部門横断ダッシュボードの構築／クロスセル連携フローの明文化／月次経営レポートの自動化（経営者が15分で全体を把握できる形式）。</p>
+                </div>
+                <div class="case-col case-col--result">
+                    <p class="case-col__label">成果</p>
+                    <p class="case-result__head">リフォーム紹介 <strong>月+14件</strong></p>
+                    <p class="case-result__sub">経営レポート作成 丸一日 → 15分<br>全社売上 前年比 +11%</p>
+                </div>
+            </div>
+            <p class="case-point"><b>ポイント：</b>部門間の連携を「仕組み」として設計したことで、担当者の意識ではなくフローとして自然にクロスセルが起きるように。経営者の「情報収集」コストが大幅に下がり、意思決定の質が向上しました。</p>
+        </article>
+
+        <p class="note">※ 数値は各社の実測値をもとにしています。クライアント名・一部の属性情報は、掲載にあたり変更・抽象化しています。</p>
+    </div>
+</section>
+
+<!-- ======= CTA ======= -->
+<section class="cta">
+    <canvas id="cta-canvas"></canvas>
+    <div class="ab-wrap cta__inner">
+        <p class="eyebrow eyebrow--on-photo">Contact</p>
+        <h2 class="jp-head jp-head--section cta__title reveal">御社の課題も、一緒に整理します。</h2>
+        <p class="cta__lead reveal">
+            上記の事例に似た課題をお持ちの方はもちろん、<br>
+            「うちはちょっと違うかも」という方も、お気軽にご相談ください。
+        </p>
+        <p class="cta__btns reveal">
+            <a class="pill pill--primary" href="contact.html">お問い合わせ</a>
+            <a class="pill pill--outline-light" href="mailto:contact@alpha-brain.jp">contact@alpha-brain.jp</a>
+        </p>
+    </div>
+</section>
+
+<!-- ======= FOOTER ======= -->
+<footer>
+    <div class="footer-grid">
+        <div>
+            <div class="footer-logo-box">
+                <span class="footer-logo-main">ALPHA BRAIN LLC</span>
+            </div>
+            <p class="footer-about">考える力で、組織と子どもの可能性を最大化する。<br>経営支援と教育事業の2軸で、東京から全国へ展開しています。</p>
+            <div class="footer-contact">
+                <p>アルファーブレイン合同会社</p>
+                <p>〒160-0023 東京都新宿区西新宿3-3-13 西新宿水間ビル6階</p>
+                <p>contact@alpha-brain.jp ／ 設立：2021年8月</p>
             </div>
         </div>
-    </footer>
+        <div>
+            <p class="footer-heading">Services</p>
+            <ul class="footer-links">
+                <li><a href="services.html#system">SFA / CRM構築</a></li>
+                <li><a href="services.html#sales">営業支援</a></li>
+                <li><a href="services.html#marketing">集客サポート</a></li>
+                <li><a href="services.html#education">楽珠そろばん教室</a></li>
+            </ul>
+        </div>
+        <div>
+            <p class="footer-heading">Navigation</p>
+            <ul class="footer-links">
+                <li><a href="index.html">トップ</a></li>
+                <li><a href="services.html">サービス内容</a></li>
+                <li><a href="cases.html">支援事例</a></li>
+                <li><a href="about.html">会社概要</a></li>
+                <li><a href="contact.html">お問い合わせ</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2024 Alpha Brain LLC. All Rights Reserved.</p>
+    </div>
+</footer>
 
-    <script>
-        lucide.createIcons();
-        (function() {
-            var els = document.querySelectorAll('.reveal');
-            var obs = new IntersectionObserver(function(entries) {
-                entries.forEach(function(entry) {
-                    if (entry.isIntersecting) { entry.target.classList.add('visible'); obs.unobserve(entry.target); }
-                });
-            }, { threshold: 0.1, rootMargin: '0px 0px -32px 0px' });
-            els.forEach(function(el) { obs.observe(el); });
-        })();
-        function toggleMobileMenu() {
-            var menu = document.getElementById('mobile-menu');
-            var menuIcon = document.getElementById('menu-icon');
-            var closeIcon = document.getElementById('close-icon');
-            if (menu.classList.contains('hidden')) {
-                menu.classList.remove('hidden'); menuIcon.classList.add('hidden'); closeIcon.classList.remove('hidden');
-            } else {
-                menu.classList.add('hidden'); menuIcon.classList.remove('hidden'); closeIcon.classList.add('hidden');
-            }
-        }
-        function handleLogoError() {
-            var img = document.getElementById('header-logo-img');
-            var text = document.getElementById('header-logo-text');
-            if (img && text) { img.style.display = 'none'; text.classList.remove('hidden'); text.classList.add('flex'); }
-        }
-        (function() {
-            var path = window.location.pathname.split('/').pop() || 'index.html';
-            var page = path.replace('.html', '') || 'index';
-            document.querySelectorAll('[data-page]').forEach(function(el) {
-                if (el.dataset.page === page) el.classList.add('nav-active');
-            });
-        })();
-    </script>
+<script src="assets/site.js"></script>
 </body>
 </html>

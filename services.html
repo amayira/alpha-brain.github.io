@@ -11,438 +11,286 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>サービス内容 | アルファーブレイン合同会社</title>
-    <meta name="description" content="不動産・住宅会社専門の経営支援サービス。業績向上支援・業務効率化支援・市場調査・マーケティング支援の3領域を横断的に提供します。">
-
+    <meta name="description" content="アルファーブレイン合同会社のサービス内容。SFA/CRM構築・営業支援・集客サポートの3領域と、楽珠そろばん教室の教育事業。提案で終わらせず、現場が動く状態まで伴走します。">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;700;900&display=swap" rel="stylesheet">
-
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: { primary: '#1A2B4C' },
-                    fontFamily: {
-                        sans: ['"Noto Sans JP"', '"Helvetica Neue"', 'Arial', 'sans-serif'],
-                        serif: ['"Noto Serif JP"', 'Georgia', 'serif'],
-                    }
-                }
-            }
-        }
-    </script>
-
-    <style>
-        html { scroll-behavior: smooth; }
-        .reveal {
-            opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 0.72s cubic-bezier(0.16, 1, 0.3, 1),
-                        transform 0.72s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .reveal.visible { opacity: 1; transform: none; }
-        .reveal-d1 { transition-delay: 0.08s; }
-        .reveal-d2 { transition-delay: 0.17s; }
-        .reveal-d3 { transition-delay: 0.26s; }
-        .nav-enter { animation: nav-enter 0.5s ease-out forwards; }
-        @keyframes nav-enter {
-            from { opacity: 0; transform: translateY(-8px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .hero-dots {
-            background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
-            background-size: 28px 28px;
-        }
-        .service-block {
-            border-radius: 16px;
-            border: 1px solid rgba(26,43,76,0.08);
-            background: white;
-            overflow: hidden;
-        }
-        .step-line::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 100%;
-            transform: translateX(-50%);
-            width: 2px;
-            height: 2rem;
-            background: rgba(26,43,76,0.15);
-        }
-        .nav-active { color: #1A2B4C !important; font-weight: 700; }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@300;500;700;900&family=Oswald:wght@400;500&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/site.css">
 </head>
-<body class="bg-white text-gray-700 font-sans antialiased">
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8H3MKRX"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8H3MKRX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-    <!-- Navigation -->
-    <nav class="nav-enter fixed w-full z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-18 py-4 items-center">
-                <a href="index.html" class="flex-shrink-0 flex items-center">
-                    <img id="header-logo-img" src="logo_title.png" alt="ALPHA BRAIN" class="h-10 w-auto object-contain" onerror="handleLogoError()"/>
-                    <div id="header-logo-text" class="hidden items-center">
-                        <span class="text-xl font-bold tracking-widest text-primary">ALPHA BRAIN</span>
-                    </div>
-                </a>
-                <div class="hidden md:flex space-x-7 items-center">
-                    <a href="services.html" data-page="services" class="text-sm text-gray-500 hover:text-primary font-medium transition-colors">サービス</a>
-                    <a href="cases.html" data-page="cases" class="text-sm text-gray-500 hover:text-primary font-medium transition-colors">支援事例</a>
-                    <a href="about.html" data-page="about" class="text-sm text-gray-500 hover:text-primary font-medium transition-colors">会社概要</a>
-                    <a href="contact.html" class="px-5 py-2.5 rounded-lg text-white text-sm font-bold transition-all hover:-translate-y-0.5 bg-primary shadow-sm">お問い合わせ</a>
-                </div>
-                <div class="md:hidden">
-                    <button onclick="toggleMobileMenu()" class="text-gray-500 focus:outline-none p-1">
-                        <i data-lucide="menu" id="menu-icon" class="h-6 w-6"></i>
-                        <i data-lucide="x" id="close-icon" class="h-6 w-6 hidden"></i>
-                    </button>
-                </div>
+<!-- ======= NAV ======= -->
+<nav id="nav">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo">
+            <img src="logo_title.png" alt="Alpha Brain LLC" style="height:28px;width:auto;filter:brightness(0) invert(1);">
+        </a>
+        <div class="nav-links">
+            <a href="services.html" data-page="services.html">Services</a>
+            <a href="cases.html" data-page="cases.html">Cases</a>
+            <a href="about.html" data-page="about.html">About</a>
+        </div>
+        <a href="contact.html" class="nav-cta" data-page="contact.html">Contact</a>
+        <div class="nav-hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+    </div>
+</nav>
+<div id="mobile-menu">
+    <a href="services.html">Services</a>
+    <a href="cases.html">Cases</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+</div>
+
+<!-- ======= PAGE HEAD ======= -->
+<header class="page-head">
+    <div class="wide-head">
+        <div class="wide-head__ph">
+            <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=1800&q=75" alt="" width="1800" height="675">
+        </div>
+        <div class="wide-head__ov">
+            <div class="wide-head__inner">
+                <p class="wide-head__eyebrow">What we do</p>
+                <h1 class="wide-head__name">Services</h1>
+                <p class="lead lead--on-photo">御社の「外部経営企画室」として、SFA/CRM構築・営業支援・集客サポートの3領域を横断的に支援します。単なる提案で終わらず、現場が実際に動く状態をつくることにコミットします。</p>
             </div>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg">
-            <div class="px-4 py-3 space-y-1">
-                <a href="services.html" class="block w-full text-left px-3 py-3.5 text-sm text-gray-700 hover:bg-gray-50 border-b border-gray-100">サービス</a>
-                <a href="cases.html" class="block w-full text-left px-3 py-3.5 text-sm text-gray-700 hover:bg-gray-50 border-b border-gray-100">支援事例</a>
-                <a href="about.html" class="block w-full text-left px-3 py-3.5 text-sm text-gray-700 hover:bg-gray-50 border-b border-gray-100">会社概要</a>
-                <a href="contact.html" class="block w-full text-left px-3 py-4 text-sm font-bold text-primary">お問い合わせ</a>
+    </div>
+</header>
+
+<!-- ======= 01 SYSTEM ======= -->
+<section class="sec svc-detail" id="system">
+    <div class="ab-wrap">
+        <p class="eyebrow">01 — SFA / CRM</p>
+        <h2 class="svc-detail__name">System</h2>
+        <p class="jp-head jp-head--section svc-detail__catch reveal">御社の業務に合った基幹システムを、ゼロから設計する。</p>
+        <p class="svc-detail__lead reveal">kintoneやスプレッドシートを活用し、顧客管理・進捗把握・数値集計を一本化します。ツールを入れて終わりにせず、既存ツールが使われていない原因まで遡って、現場が続けられる仕組みに整えます。</p>
+
+        <ol class="deliverables">
+            <li class="deliverable reveal">
+                <span class="deliverable__no">Deliverable 01</span>
+                <h3 class="deliverable__title">kintoneアプリの設計・カスタマイズ</h3>
+                <p>顧客・案件・進捗をどの粒度で持つかから設計。既存の業務フローに合わせてアプリを組み、入力の手数を増やさずに必要な数字が溜まる形にします。</p>
+            </li>
+            <li class="deliverable reveal">
+                <span class="deliverable__no">Deliverable 02</span>
+                <h3 class="deliverable__title">スプレッドシート集計基盤の構築</h3>
+                <p>手作業の集計をなくし、入力したらすぐ見えるダッシュボードを構築。Googleスプレッドシート・Excelで完結できる仕組みをつくります。</p>
+            </li>
+            <li class="deliverable reveal">
+                <span class="deliverable__no">Deliverable 03</span>
+                <h3 class="deliverable__title">GASによる自動化・ダッシュボード化</h3>
+                <p>経営者が見る「全体ビュー」と、現場が入力する「日次・週次ビュー」を分けて設計。必要な情報だけを必要な人に届けます。</p>
+            </li>
+            <li class="deliverable reveal">
+                <span class="deliverable__no">Deliverable 04</span>
+                <h3 class="deliverable__title">運用ルール整備・定着支援</h3>
+                <p>属人化した業務をフロー図に落とし込み、マニュアル化。権限設計まで含めて、人が入れ替わっても崩れない仕組みをつくります。</p>
+            </li>
+        </ol>
+    </div>
+</section>
+
+<!-- ======= 02 SALES ======= -->
+<section class="sec sec--tint svc-detail" id="sales">
+    <div class="ab-wrap">
+        <p class="eyebrow">02 — 営業支援</p>
+        <h2 class="svc-detail__name">Sales</h2>
+        <p class="jp-head jp-head--section svc-detail__catch reveal">反響から成約までの歩留まりを、数値で改善する。</p>
+        <p class="svc-detail__lead reveal">営業KPIの棚卸しから定例会の型化まで、「数字を見て動ける組織」をつくります。どこで落ちているかを数値で示すことで、マネージャーが感覚ではなく根拠をもって指導できる状態を目指します。</p>
+
+        <ol class="deliverables">
+            <li class="deliverable reveal">
+                <span class="deliverable__no">Deliverable 01</span>
+                <h3 class="deliverable__title">KPIの棚卸し・KPIツリー設計</h3>
+                <p>現状のKPIを整理し、事業目標から逆算したKPIツリーを設計。指標の定義を統一して、全員が同じ言語で話せる状態をつくります。</p>
+            </li>
+            <li class="deliverable reveal">
+                <span class="deliverable__no">Deliverable 02</span>
+                <h3 class="deliverable__title">歩留まり分析（反響 → 契約）</h3>
+                <p>反響からアポ・面談・成約までの各ステージの転換率を可視化。ボトルネックを特定し、具体的な改善アクションを設計します。</p>
+            </li>
+            <li class="deliverable reveal">
+                <span class="deliverable__no">Deliverable 03</span>
+                <h3 class="deliverable__title">アプローチブック・営業ツール作成</h3>
+                <p>トップ営業の話法を分解して資料に落とし込み、誰が使っても一定の水準で話せる状態に。ロープレ体制の整備まで含めて支援します。</p>
+            </li>
+            <li class="deliverable reveal">
+                <span class="deliverable__no">Deliverable 04</span>
+                <h3 class="deliverable__title">定例会の型化・会議設計</h3>
+                <p>報告会になっている会議を「意思決定の場」に変えます。アジェンダ設計・ファシリテーション・議事録フォーマットまで一気通貫で整備。</p>
+            </li>
+        </ol>
+    </div>
+</section>
+
+<!-- ======= 03 MARKETING ======= -->
+<section class="sec svc-detail" id="marketing">
+    <div class="ab-wrap">
+        <p class="eyebrow">03 — 集客サポート</p>
+        <h2 class="svc-detail__name">Marketing</h2>
+        <p class="jp-head jp-head--section svc-detail__catch reveal">問い合わせが増える集客導線を、一本つくる。</p>
+        <p class="svc-detail__lead reveal">商圏・競合を調べて終わりにしない。広告・LP・Googleビジネスプロフィール・チラシまで、オンラインとオフラインをつないだ導線を設計し、運用まで代行します。</p>
+
+        <ol class="deliverables">
+            <li class="deliverable reveal">
+                <span class="deliverable__no">Deliverable 01</span>
+                <h3 class="deliverable__title">Google / Meta広告の運用代行</h3>
+                <p>予算設計・原稿作成・入札調整・レポーティングまで一括で対応。CPAと反響の質の両方を見ながら、配分を毎月組み直します。</p>
+            </li>
+            <li class="deliverable reveal">
+                <span class="deliverable__no">Deliverable 02</span>
+                <h3 class="deliverable__title">LP制作・改善 / GBP強化</h3>
+                <p>問い合わせフォームまで含めたLPを制作し、計測タグを入れて改善を回します。Googleビジネスプロフィールの整備・口コミ導線も併せて設計。</p>
+            </li>
+            <li class="deliverable reveal">
+                <span class="deliverable__no">Deliverable 03</span>
+                <h3 class="deliverable__title">商圏分析・競合調査</h3>
+                <p>エリアの人口動態・競合物件・価格帯・顧客層を分析。「どこで・誰に・何を」売るかの戦略的判断を支援します。</p>
+            </li>
+            <li class="deliverable reveal">
+                <span class="deliverable__no">Deliverable 04</span>
+                <h3 class="deliverable__title">集客導線の整理（広告 〜 接客）</h3>
+                <p>広告媒体・ポータルサイト・SNS・チラシなど複数チャネルの効果を整理。費用対効果を可視化し、最適な予算配分を提案します。</p>
+            </li>
+        </ol>
+    </div>
+</section>
+
+<!-- ======= 04 EDUCATION ======= -->
+<section class="sec sec--tint svc-detail" id="education">
+    <div class="ab-wrap">
+        <p class="eyebrow">04 — 教育事業</p>
+        <h2 class="svc-detail__name">Education</h2>
+        <p class="jp-head jp-head--section svc-detail__catch reveal">そろばんで、集中力・暗算力・右脳イメージ力を育てる。</p>
+        <p class="svc-detail__lead reveal">東京・練馬区で「楽珠そろばん教室」を4教室運営しています。支援先に仕組みを提案するだけでなく、自社でも集客・採用・現場運営を回していることが、コンサルティングの土台になっています。</p>
+    </div>
+
+    <div style="margin-top:36px;">
+        <div class="wide-head">
+            <div class="wide-head__ph wide-head__ph--top">
+                <img src="assets/rakutama-classroom.webp" alt="楽珠そろばん教室の授業風景" loading="lazy" width="1200" height="900">
             </div>
-        </div>
-    </nav>
-
-    <!-- Page Hero -->
-    <section class="relative pt-32 pb-16 overflow-hidden bg-primary">
-        <div class="absolute inset-0 hero-dots"></div>
-        <div class="absolute bottom-0 right-0 w-96 h-96 opacity-[0.07]" style="background: radial-gradient(circle, #6699cc 0%, transparent 70%);"></div>
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <p class="text-xs font-bold tracking-[0.25em] uppercase text-blue-300/70 mb-4">Services</p>
-            <h1 class="font-serif text-3xl lg:text-4xl font-black text-white mb-4">サービス内容</h1>
-            <p class="text-blue-100/70 text-sm leading-relaxed max-w-2xl">
-                御社の「外部経営企画室」として、業績向上・業務効率化・市場調査の3領域を横断的に支援します。
-                単なる提案で終わらず、現場が実際に動く状態をつくることにコミットします。
-            </p>
-        </div>
-    </section>
-
-    <!-- Service 01: 業績向上支援 -->
-    <section class="py-20 bg-white">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="service-block reveal">
-                <div class="grid md:grid-cols-5">
-                    <div class="md:col-span-2 p-10 flex flex-col justify-center" style="background: linear-gradient(135deg, #1A2B4C 0%, #2a4070 100%);">
-                        <p class="text-xs font-bold tracking-[0.2em] uppercase text-blue-300/60 mb-4">Service 01</p>
-                        <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-6" style="background: rgba(255,255,255,0.1)">
-                            <i data-lucide="trending-up" class="w-7 h-7 text-blue-300"></i>
-                        </div>
-                        <h2 class="font-serif text-2xl font-black text-white mb-2">業績向上支援</h2>
-                        <p class="text-sm text-blue-300/70 mb-6">セールス・KPI設計</p>
-                        <p class="text-sm text-blue-100/70 leading-relaxed">
-                            営業KPIの棚卸しから定例会の型化まで、「数字を見て動ける組織」をつくる支援を行います。
-                        </p>
-                    </div>
-                    <div class="md:col-span-3 p-10">
-                        <h3 class="font-bold text-primary mb-6 text-base">支援内容</h3>
-                        <div class="space-y-5">
-                            <div class="flex gap-4">
-                                <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 mt-0.5" style="background:rgba(26,43,76,0.07)">
-                                    <i data-lucide="bar-chart-3" class="w-4 h-4 text-primary"></i>
-                                </div>
-                                <div>
-                                    <p class="font-bold text-gray-800 text-sm mb-1">KPIの棚卸し・KPIツリー設計</p>
-                                    <p class="text-xs text-gray-500 leading-relaxed">現状のKPIを整理し、事業目標から逆算したKPIツリーを設計。指標の定義を統一して、全員が同じ言語で話せる状態をつくります。</p>
-                                </div>
-                            </div>
-                            <div class="flex gap-4">
-                                <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 mt-0.5" style="background:rgba(26,43,76,0.07)">
-                                    <i data-lucide="git-branch" class="w-4 h-4 text-primary"></i>
-                                </div>
-                                <div>
-                                    <p class="font-bold text-gray-800 text-sm mb-1">歩留まり分析（反響→契約）</p>
-                                    <p class="text-xs text-gray-500 leading-relaxed">反響からアポ・面談・成約までの各ステージの転換率を可視化。ボトルネックを特定し、具体的な改善アクションを設計します。</p>
-                                </div>
-                            </div>
-                            <div class="flex gap-4">
-                                <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 mt-0.5" style="background:rgba(26,43,76,0.07)">
-                                    <i data-lucide="calendar-check" class="w-4 h-4 text-primary"></i>
-                                </div>
-                                <div>
-                                    <p class="font-bold text-gray-800 text-sm mb-1">定例会の型化・会議設計</p>
-                                    <p class="text-xs text-gray-500 leading-relaxed">報告会になっている会議を「意思決定の場」に変えます。アジェンダ設計・ファシリテーション・議事録フォーマットまで一気通貫で整備。</p>
-                                </div>
-                            </div>
-                            <div class="flex gap-4">
-                                <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 mt-0.5" style="background:rgba(26,43,76,0.07)">
-                                    <i data-lucide="rocket" class="w-4 h-4 text-primary"></i>
-                                </div>
-                                <div>
-                                    <p class="font-bold text-gray-800 text-sm mb-1">改善施策の提案・実行伴走</p>
-                                    <p class="text-xs text-gray-500 leading-relaxed">課題特定だけでなく、施策立案から現場への落とし込みまで伴走。定着するまでコミットします。</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Service 02: 業務効率化支援 -->
-    <section class="py-4 bg-white">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="service-block reveal">
-                <div class="grid md:grid-cols-5">
-                    <div class="md:col-span-3 p-10 order-2 md:order-1">
-                        <h3 class="font-bold text-primary mb-6 text-base">支援内容</h3>
-                        <div class="space-y-5">
-                            <div class="flex gap-4">
-                                <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 mt-0.5" style="background:rgba(26,43,76,0.07)">
-                                    <i data-lucide="database" class="w-4 h-4 text-primary"></i>
-                                </div>
-                                <div>
-                                    <p class="font-bold text-gray-800 text-sm mb-1">CRM／SFAの設計・運用整理</p>
-                                    <p class="text-xs text-gray-500 leading-relaxed">ツール選定から運用ルール整備まで。既存ツールが使われていない原因を特定し、現場が続けられる仕組みに改善します。</p>
-                                </div>
-                            </div>
-                            <div class="flex gap-4">
-                                <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 mt-0.5" style="background:rgba(26,43,76,0.07)">
-                                    <i data-lucide="table" class="w-4 h-4 text-primary"></i>
-                                </div>
-                                <div>
-                                    <p class="font-bold text-gray-800 text-sm mb-1">スプレッドシート集計基盤の構築</p>
-                                    <p class="text-xs text-gray-500 leading-relaxed">手作業の集計をなくし、入力したらすぐ見えるダッシュボードを構築。Googleスプレッドシート・Excelで完結できる仕組みをつくります。</p>
-                                </div>
-                            </div>
-                            <div class="flex gap-4">
-                                <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 mt-0.5" style="background:rgba(26,43,76,0.07)">
-                                    <i data-lucide="monitor" class="w-4 h-4 text-primary"></i>
-                                </div>
-                                <div>
-                                    <p class="font-bold text-gray-800 text-sm mb-1">経営・現場ダッシュボード構築</p>
-                                    <p class="text-xs text-gray-500 leading-relaxed">経営者が見る「全体ビュー」と、現場が入力する「日次・週次ビュー」を分けて設計。必要な情報だけを必要な人に届けます。</p>
-                                </div>
-                            </div>
-                            <div class="flex gap-4">
-                                <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 mt-0.5" style="background:rgba(26,43,76,0.07)">
-                                    <i data-lucide="file-cog" class="w-4 h-4 text-primary"></i>
-                                </div>
-                                <div>
-                                    <p class="font-bold text-gray-800 text-sm mb-1">業務フロー標準化・権限設計</p>
-                                    <p class="text-xs text-gray-500 leading-relaxed">属人化した業務をフロー図に落とし込み、マニュアル化。人が入れ替わっても崩れない仕組みをつくります。</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="md:col-span-2 p-10 flex flex-col justify-center order-1 md:order-2" style="background: linear-gradient(135deg, #1A2B4C 0%, #2a4070 100%);">
-                        <p class="text-xs font-bold tracking-[0.2em] uppercase text-blue-300/60 mb-4">Service 02</p>
-                        <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-6" style="background: rgba(255,255,255,0.1)">
-                            <i data-lucide="settings" class="w-7 h-7 text-blue-300"></i>
-                        </div>
-                        <h2 class="font-serif text-2xl font-black text-white mb-2">業務効率化支援</h2>
-                        <p class="text-sm text-blue-300/70 mb-6">仕組み化・DX</p>
-                        <p class="text-sm text-blue-100/70 leading-relaxed">
-                            手作業・属人化・ツールの未活用を解消し、「人が入れ替わっても動く組織」へ。現場目線で実際に使える仕組みを構築します。
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Service 03: 市場調査・マーケ -->
-    <section class="py-4 pb-20 bg-white">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="service-block reveal">
-                <div class="grid md:grid-cols-5">
-                    <div class="md:col-span-2 p-10 flex flex-col justify-center" style="background: linear-gradient(135deg, #1A2B4C 0%, #2a4070 100%);">
-                        <p class="text-xs font-bold tracking-[0.2em] uppercase text-blue-300/60 mb-4">Service 03</p>
-                        <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-6" style="background: rgba(255,255,255,0.1)">
-                            <i data-lucide="map-pin" class="w-7 h-7 text-blue-300"></i>
-                        </div>
-                        <h2 class="font-serif text-2xl font-black text-white mb-2">市場調査・マーケ</h2>
-                        <p class="text-sm text-blue-300/70 mb-6">戦略支援</p>
-                        <p class="text-sm text-blue-100/70 leading-relaxed">
-                            商圏・競合を調べて終わりにしない。集客から接客・成約までの導線を整理し、実行につながる戦略を立案します。
-                        </p>
-                    </div>
-                    <div class="md:col-span-3 p-10">
-                        <h3 class="font-bold text-primary mb-6 text-base">支援内容</h3>
-                        <div class="space-y-5">
-                            <div class="flex gap-4">
-                                <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 mt-0.5" style="background:rgba(26,43,76,0.07)">
-                                    <i data-lucide="map" class="w-4 h-4 text-primary"></i>
-                                </div>
-                                <div>
-                                    <p class="font-bold text-gray-800 text-sm mb-1">商圏分析・競合調査</p>
-                                    <p class="text-xs text-gray-500 leading-relaxed">エリアの人口動態・競合物件・価格帯・顧客層を分析。「どこで・誰に・何を」売るかの戦略的判断を支援します。</p>
-                                </div>
-                            </div>
-                            <div class="flex gap-4">
-                                <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 mt-0.5" style="background:rgba(26,43,76,0.07)">
-                                    <i data-lucide="route" class="w-4 h-4 text-primary"></i>
-                                </div>
-                                <div>
-                                    <p class="font-bold text-gray-800 text-sm mb-1">集客導線の整理（広告〜接客）</p>
-                                    <p class="text-xs text-gray-500 leading-relaxed">広告媒体・ポータルサイト・SNSなど複数チャネルの効果を整理。費用対効果を可視化し、最適な予算配分を提案します。</p>
-                                </div>
-                            </div>
-                            <div class="flex gap-4">
-                                <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 mt-0.5" style="background:rgba(26,43,76,0.07)">
-                                    <i data-lucide="file-text" class="w-4 h-4 text-primary"></i>
-                                </div>
-                                <div>
-                                    <p class="font-bold text-gray-800 text-sm mb-1">企画書・報告書の作成支援</p>
-                                    <p class="text-xs text-gray-500 leading-relaxed">役員・銀行・パートナー向けの資料作成を支援。データの裏付けがある説得力の高い資料に仕上げます。</p>
-                                </div>
-                            </div>
-                            <div class="flex gap-4">
-                                <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 mt-0.5" style="background:rgba(26,43,76,0.07)">
-                                    <i data-lucide="users" class="w-4 h-4 text-primary"></i>
-                                </div>
-                                <div>
-                                    <p class="font-bold text-gray-800 text-sm mb-1">内製化支援・伴走支援</p>
-                                    <p class="text-xs text-gray-500 leading-relaxed">外部に依存しない体制を目指して、社内でできる調査・分析の仕組みを整備。ノウハウの移転まで伴走します。</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Flow -->
-    <section class="py-20 bg-[#FAFAF8]">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-14 reveal">
-                <p class="text-xs font-bold tracking-[0.2em] uppercase text-primary/50 mb-3">Flow</p>
-                <h2 class="font-serif text-2xl md:text-3xl font-black text-primary">支援の流れ</h2>
-                <p class="text-gray-500 text-sm mt-3">お問い合わせから支援開始まで、スムーズに進められます</p>
-            </div>
-
-            <div class="space-y-4">
-                <div class="flex gap-6 items-start reveal reveal-d1">
-                    <div class="w-12 h-12 rounded-full flex items-center justify-center shrink-0 font-serif font-black text-white text-lg" style="background:#1A2B4C">1</div>
-                    <div class="bg-white rounded-2xl p-6 flex-1 border border-gray-100 shadow-sm">
-                        <h3 class="font-bold text-primary mb-2">お問い合わせ・初回ヒアリング</h3>
-                        <p class="text-sm text-gray-500 leading-relaxed">まずはメールにてご連絡ください。日程を調整し、オンラインまたは対面で現状の課題や経営の状況をお聞きします。</p>
-                    </div>
-                </div>
-                <div class="flex gap-6 items-start reveal reveal-d2">
-                    <div class="w-12 h-12 rounded-full flex items-center justify-center shrink-0 font-serif font-black text-white text-lg" style="background:#1A2B4C">2</div>
-                    <div class="bg-white rounded-2xl p-6 flex-1 border border-gray-100 shadow-sm">
-                        <h3 class="font-bold text-primary mb-2">課題整理・提案書の提示</h3>
-                        <p class="text-sm text-gray-500 leading-relaxed">ヒアリング内容をもとに、課題を整理して支援プランをご提案します。スコープ・期間・費用感をご確認いただきます。</p>
-                    </div>
-                </div>
-                <div class="flex gap-6 items-start reveal reveal-d3">
-                    <div class="w-12 h-12 rounded-full flex items-center justify-center shrink-0 font-serif font-black text-white text-lg" style="background:#1A2B4C">3</div>
-                    <div class="bg-white rounded-2xl p-6 flex-1 border border-gray-100 shadow-sm">
-                        <h3 class="font-bold text-primary mb-2">契約・支援開始</h3>
-                        <p class="text-sm text-gray-500 leading-relaxed">内容にご納得いただけたら契約を締結し、支援を開始します。月次顧問契約またはプロジェクト型でご対応します。</p>
-                    </div>
-                </div>
-                <div class="flex gap-6 items-start reveal reveal-d1">
-                    <div class="w-12 h-12 rounded-full flex items-center justify-center shrink-0 font-serif font-black text-white text-lg" style="background:#1A2B4C">4</div>
-                    <div class="bg-white rounded-2xl p-6 flex-1 border border-gray-100 shadow-sm">
-                        <h3 class="font-bold text-primary mb-2">定期的な振り返り・定着まで伴走</h3>
-                        <p class="text-sm text-gray-500 leading-relaxed">週次・月次での進捗確認を行い、現場が実際に動ける状態になるまでコミットします。仕組みが定着したら内製化をサポートします。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="py-24 bg-primary relative overflow-hidden">
-        <div class="absolute inset-0 hero-dots"></div>
-        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            <p class="text-xs font-bold tracking-[0.25em] uppercase text-blue-300/70 mb-4 reveal">Contact</p>
-            <h2 class="font-serif text-3xl md:text-4xl font-black text-white mb-4 reveal">まずはご相談ください</h2>
-            <p class="text-blue-100/70 text-sm mb-10 leading-relaxed reveal">
-                どのサービスが合っているか分からない場合も、現状の課題をお聞きした上でご提案します。<br>まずはお気軽にご連絡ください。
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center reveal">
-                <a href="contact.html" class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-white text-primary font-bold text-base hover:bg-blue-50 transition-colors shadow-lg">
-                    <i data-lucide="mail" class="w-5 h-5"></i>
-                    お問い合わせページへ
-                </a>
-                <a href="mailto:contact@alpha-brain.jp" class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl border border-white/30 text-white font-bold text-base hover:bg-white/10 transition-colors">
-                    contact@alpha-brain.jp
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-950 text-gray-500 py-12 border-t border-gray-900">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-3 gap-10 mb-10">
-                <div>
-                    <p class="text-white font-bold tracking-widest text-base mb-4">ALPHA BRAIN</p>
-                    <div class="space-y-2 text-xs">
-                        <p class="flex items-start gap-2"><i data-lucide="building-2" class="w-3.5 h-3.5 mt-0.5 shrink-0"></i>アルファーブレイン合同会社</p>
-                        <p class="flex items-start gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 mt-0.5 shrink-0"></i>〒160-0023 東京都新宿区西新宿3-3-13 西新宿水間ビル6階</p>
-                        <p class="flex items-start gap-2"><i data-lucide="mail" class="w-3.5 h-3.5 mt-0.5 shrink-0"></i>contact@alpha-brain.jp</p>
-                    </div>
-                </div>
-                <div>
-                    <p class="text-white text-xs font-bold uppercase tracking-widest mb-4">Navigation</p>
-                    <ul class="space-y-2 text-xs">
-                        <li><a href="index.html" class="hover:text-white transition-colors">トップ</a></li>
-                        <li><a href="services.html" class="hover:text-white transition-colors">サービス内容</a></li>
-                        <li><a href="cases.html" class="hover:text-white transition-colors">支援事例</a></li>
-                        <li><a href="about.html" class="hover:text-white transition-colors">会社概要</a></li>
-                        <li><a href="contact.html" class="hover:text-white transition-colors">お問い合わせ</a></li>
+            <div class="wide-head__ov">
+                <div class="wide-head__inner">
+                    <p class="wide-head__eyebrow">楽珠そろばん教室 練馬</p>
+                    <h3 class="wide-head__name">Rakutama</h3>
+                    <ul class="wide-head__spec">
+                        <li><span>Schools</span>練馬4校（早宮・氷川台・中村・平和台）</li>
+                        <li><span>Class</span>55分 / 16:00・17:00</li>
+                        <li><span>Price</span>週1〜3回 ¥6,050〜¥8,800</li>
+                        <li><span>Trial</span>無料体験 受付中</li>
                     </ul>
                 </div>
-                <div class="text-xs">
-                    <p class="text-white text-xs font-bold uppercase tracking-widest mb-4">Business</p>
-                    <p class="leading-relaxed mb-4">不動産・住宅会社専門の経営コンサルティング<br>（業績向上／業務効率化／市場調査）</p>
-                    <p>設立：2021年8月</p>
-                </div>
-            </div>
-            <div class="border-t border-gray-900 pt-6 text-xs text-center">
-                <p>&copy; Alpha Brain LLC. All Rights Reserved.</p>
             </div>
         </div>
-    </footer>
+    </div>
 
-    <script>
-        lucide.createIcons();
-        (function() {
-            var els = document.querySelectorAll('.reveal');
-            var obs = new IntersectionObserver(function(entries) {
-                entries.forEach(function(entry) {
-                    if (entry.isIntersecting) { entry.target.classList.add('visible'); obs.unobserve(entry.target); }
-                });
-            }, { threshold: 0.1, rootMargin: '0px 0px -32px 0px' });
-            els.forEach(function(el) { obs.observe(el); });
-        })();
-        function toggleMobileMenu() {
-            var menu = document.getElementById('mobile-menu');
-            var menuIcon = document.getElementById('menu-icon');
-            var closeIcon = document.getElementById('close-icon');
-            if (menu.classList.contains('hidden')) {
-                menu.classList.remove('hidden'); menuIcon.classList.add('hidden'); closeIcon.classList.remove('hidden');
-            } else {
-                menu.classList.add('hidden'); menuIcon.classList.remove('hidden'); closeIcon.classList.add('hidden');
-            }
-        }
-        function handleLogoError() {
-            var img = document.getElementById('header-logo-img');
-            var text = document.getElementById('header-logo-text');
-            if (img && text) { img.style.display = 'none'; text.classList.remove('hidden'); text.classList.add('flex'); }
-        }
-        (function() {
-            var path = window.location.pathname.split('/').pop() || 'index.html';
-            var page = path.replace('.html', '') || 'index';
-            document.querySelectorAll('[data-page]').forEach(function(el) {
-                if (el.dataset.page === page) el.classList.add('nav-active');
-            });
-        })();
-    </script>
+    <div class="ab-wrap" style="margin-top:36px;">
+        <table class="spec-table">
+            <tbody>
+                <tr><th class="spec-table__jp">早宮校</th><td>火曜・金曜 ／ 16:00・17:00クラス</td></tr>
+                <tr><th class="spec-table__jp">氷川台校</th><td>月曜・水曜 ／ 16:00・17:00クラス</td></tr>
+                <tr><th class="spec-table__jp">中村校</th><td>月曜・木曜 ／ 16:00・17:00クラス</td></tr>
+                <tr><th class="spec-table__jp">平和台校</th><td>月曜・木曜 ／ 2026年9月開校・体験受付中</td></tr>
+                <tr><th class="spec-table__jp">受講料</th><td>週1回 ¥6,050 ／ 週2回 ¥7,700 ／ 週3回 ¥8,800（税込）</td></tr>
+            </tbody>
+        </table>
+        <p style="margin-top:28px;">
+            <a class="pill pill--ghost" href="https://rakutama-tokyo.com/" target="_blank" rel="noopener">楽珠そろばん練馬 公式サイト ↗</a>
+        </p>
+    </div>
+</section>
+
+<!-- ======= FLOW ======= -->
+<section class="sec" id="flow">
+    <div class="ab-wrap">
+        <div class="sec-head reveal">
+            <p class="eyebrow">Flow</p>
+            <h2 class="jp-head jp-head--section">支援の流れ</h2>
+            <p class="lead">お問い合わせから支援開始まで、スムーズに進められます。</p>
+        </div>
+        <ol class="steps">
+            <li class="step reveal">
+                <span class="step__no">Step 1</span>
+                <h3 class="step__title">お問い合わせ・初回ヒアリング</h3>
+                <p>まずはメールにてご連絡ください。日程を調整し、オンラインまたは対面で現状の課題や経営の状況をお聞きします。</p>
+            </li>
+            <li class="step reveal reveal-d1">
+                <span class="step__no">Step 2</span>
+                <h3 class="step__title">課題整理・提案書の提示</h3>
+                <p>ヒアリング内容をもとに、課題を整理して支援プランをご提案します。スコープ・期間・費用感をご確認いただきます。</p>
+            </li>
+            <li class="step reveal reveal-d2">
+                <span class="step__no">Step 3</span>
+                <h3 class="step__title">契約・支援開始</h3>
+                <p>内容にご納得いただけたら契約を締結し、支援を開始します。月次顧問契約またはプロジェクト型でご対応します。</p>
+            </li>
+            <li class="step reveal reveal-d3">
+                <span class="step__no">Step 4</span>
+                <h3 class="step__title">振り返り・定着まで伴走</h3>
+                <p>週次・月次での進捗確認を行い、現場が実際に動ける状態になるまでコミットします。仕組みが定着したら内製化をサポートします。</p>
+            </li>
+        </ol>
+    </div>
+</section>
+
+<!-- ======= CTA ======= -->
+<section class="cta">
+    <canvas id="cta-canvas"></canvas>
+    <div class="ab-wrap cta__inner">
+        <p class="eyebrow eyebrow--on-photo">Contact</p>
+        <h2 class="jp-head jp-head--section cta__title reveal">まずはご相談ください。</h2>
+        <p class="cta__lead reveal">
+            どのサービスが合っているか分からない場合も、<br>
+            現状の課題をお聞きした上でご提案します。
+        </p>
+        <p class="cta__btns reveal">
+            <a class="pill pill--primary" href="contact.html">お問い合わせ</a>
+            <a class="pill pill--outline-light" href="mailto:contact@alpha-brain.jp">contact@alpha-brain.jp</a>
+        </p>
+    </div>
+</section>
+
+<!-- ======= FOOTER ======= -->
+<footer>
+    <div class="footer-grid">
+        <div>
+            <div class="footer-logo-box">
+                <span class="footer-logo-main">ALPHA BRAIN LLC</span>
+            </div>
+            <p class="footer-about">考える力で、組織と子どもの可能性を最大化する。<br>経営支援と教育事業の2軸で、東京から全国へ展開しています。</p>
+            <div class="footer-contact">
+                <p>アルファーブレイン合同会社</p>
+                <p>〒160-0023 東京都新宿区西新宿3-3-13 西新宿水間ビル6階</p>
+                <p>contact@alpha-brain.jp ／ 設立：2021年8月</p>
+            </div>
+        </div>
+        <div>
+            <p class="footer-heading">Services</p>
+            <ul class="footer-links">
+                <li><a href="services.html#system">SFA / CRM構築</a></li>
+                <li><a href="services.html#sales">営業支援</a></li>
+                <li><a href="services.html#marketing">集客サポート</a></li>
+                <li><a href="services.html#education">楽珠そろばん教室</a></li>
+            </ul>
+        </div>
+        <div>
+            <p class="footer-heading">Navigation</p>
+            <ul class="footer-links">
+                <li><a href="index.html">トップ</a></li>
+                <li><a href="services.html">サービス内容</a></li>
+                <li><a href="cases.html">支援事例</a></li>
+                <li><a href="about.html">会社概要</a></li>
+                <li><a href="contact.html">お問い合わせ</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2024 Alpha Brain LLC. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<script src="assets/site.js"></script>
 </body>
 </html>
